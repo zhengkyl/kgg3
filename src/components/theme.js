@@ -1,5 +1,5 @@
 import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles"
-import { light } from "@material-ui/core/styles/createPalette"
+// import { light } from "@material-ui/core/styles/createPalette"
 
 const theme = responsiveFontSizes(
   createMuiTheme({
@@ -27,6 +27,12 @@ const theme = responsiveFontSizes(
       fontFamilyMono:`"Inconsolata", "Lucida Console", "Monaco", sans-serif`,
       h1:{
         fontWeight:500,
+      },
+      h2:{
+        fontFamily:`"Inconsolata", "Lucida Console", "Monaco", sans-serif`,
+      },
+      h6:{
+        fontFamily:`"Inconsolata", "Lucida Console", "Monaco", sans-serif`,
       }
     }
   })  

@@ -6,7 +6,6 @@ import {
   Toolbar,
   List,
   ListItem,
-  ListItemIcon,
   Slide,
   useScrollTrigger,
   Typography,
@@ -16,8 +15,7 @@ import { Link } from "gatsby"
 import React, { useState } from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import MenuIcon from "./menuIcon"
-import clsx from "clsx"
-import KggLogo from "../images/kgg_yellow.svg"
+import KggLogo from "../assets/svgs/kgg_yellow.svg"
 const useStyles = makeStyles(theme => ({
   appBar: {
     zIndex: 1400,
@@ -74,7 +72,7 @@ const useStyles = makeStyles(theme => ({
     alignItems: "stretch",
     justifyContent:'space-between',
     flexGrow:1,
-    maxWidth: theme.breakpoints.width("md"),
+    maxWidth: theme.breakpoints.width("lg"),
   },
 
   menuButton: {
@@ -87,12 +85,12 @@ const useStyles = makeStyles(theme => ({
 const pages = [
   { title: "Home", path: "/" },
   { title: "News", path: "/news" },
+  { title: "People", path: "/people" },
   { title: "Contact", path: "/contact" },
-  { title: "Store", path: "/store" },
 ]
 
-function HideOnScroll(props) {
-  const { children, window } = props
+function HideOnScroll({children}) {
+  // const { children, window } = props
   const trigger = useScrollTrigger()
 
   return (
@@ -114,9 +112,8 @@ export default function Navbar() {
   const mobileList = () => (
     <List className={classes.list}>
       {pages.map(page => (
-        <Typography variant="h5" component="li">
+        <Typography variant="h5" component="li" key={page.title}>
           <ListItem
-            key={page.title}
             button
             className={classes.listItem}
             onClick={toggleDrawer(false)}

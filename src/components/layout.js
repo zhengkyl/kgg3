@@ -10,23 +10,14 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 
-import Header from "./header"
 import Navbar from "./navbar"
+import Footer from "./footer"
 // import "./layout.css"
 import CssBaseline from "@material-ui/core/CssBaseline"
-import { ThemeProvider } from "@material-ui/core"
+import { ThemeProvider, Container } from "@material-ui/core"
 import theme from "./theme"
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
 
   return (
 
@@ -38,22 +29,23 @@ const Layout = ({ children }) => {
         </Helmet>
         <CssBaseline/>
         <Navbar/>
-        <div
-          style={{
-            margin: `0 auto`,
-            maxWidth: 960,
-            padding: `0 1.0875rem 1.45rem`,
-            overflowX: `hidden`,
-          }}
+        <Container maxWidth="lg"
+          // style={{
+          //   margin: `0 auto`,
+          //   maxWidth: 960,
+          //   padding: `0 1.0875rem 1.45rem`,
+          //   overflowX: `hidden`,
+          // }}
         >
           
           <main>{children}</main>
           <footer>
+            <Footer/>
             © {new Date().getFullYear()}, Built with
             {` `}
             <a href="https://www.gatsbyjs.org">Gatsby</a>
           </footer>
-        </div>
+        </Container>
       </React.Fragment>
     </ThemeProvider>
   )
