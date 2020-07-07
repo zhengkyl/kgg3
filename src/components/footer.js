@@ -24,6 +24,8 @@ const Footer = () => {
           {" "}
           www.flaticon.com
         </a>
+        <a href='https://www.freepik.com/free-vector/people-jumping-youth-day-design_8648097.htm'>People vector created by freepik - www.freepik.com</a>
+        <a href="https://www.freepik.com/free-vector/business-woman-with-coffee-posting-photo-internet_5481388.htm">Business vector created by pikisuperstar - www.freepik.com</a>
       </div>
       </>
   )

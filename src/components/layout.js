@@ -29,14 +29,14 @@ const Layout = ({ children }) => {
         </Helmet>
         <CssBaseline/>
         <Navbar/>
-        <Container maxWidth="lg"
+        {/* <Container maxWidth="lg"
           // style={{
           //   margin: `0 auto`,
           //   maxWidth: 960,
           //   padding: `0 1.0875rem 1.45rem`,
           //   overflowX: `hidden`,
           // }}
-        >
+        > */}
           
           <main>{children}</main>
           <footer>
@@ -45,7 +45,7 @@ const Layout = ({ children }) => {
             {` `}
             <a href="https://www.gatsbyjs.org">Gatsby</a>
           </footer>
-        </Container>
+        {/* </Container> */}
       </React.Fragment>
     </ThemeProvider>
   )
