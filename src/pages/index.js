@@ -15,6 +15,8 @@ import Typography from "@material-ui/core/Typography"
 // import PhoneSVG from "../images/phone.svg"
 // import LaptopSVG from "../images/laptop.svg"
 import SplashSVG from "../assets/svgs/kgg_splash.svg"
+import CouchSVG from "../assets/svgs/couch_yellow.svg"
+import BlueSVG from "../assets/svgs/blue_fantasy.svg"
 import DownSVG from "../assets/svgs/down_arrow.svg"
 import DiversitySVG from "../assets/svgs/diversity.svg"
 import joshZoom from "../assets/images/josh_zoom.gif"
@@ -26,31 +28,39 @@ import WaveBotSVG from "../assets/svgs/wave_bot.svg"
 import { makeStyles } from "@material-ui/core/styles"
 const useStyles = makeStyles(theme => ({
   sloganContainer: {
-    position: "relative",
+    // position: "absolute",
+    zIndex:100,
   },
   sloganBack: {
     position: "absolute",
-    transform: "translate(-4px, 3px)",
+    transform: `translate(-0.06em, 0.04em)`,
     color: "#f8f93350",
   },
   sloganFront: {
-    position: "relative",
+    position: "absolute",
   },
   splashArt: {
-    opacity: 0.6,
-    zIndex: -1,
-    position: "absolute",
-    width: 700,
-    right: 0,
+    // zIndex: -1,
+    
+    // width: 700,
+    // right: 0,
+  },
+  splashCouch: {
+    // position:"relative",
   },
   splashContainer: {
-    position: "relative",
-    height: 500,
-    // margin: "0 -1.0785rem",
-    marginBottom: theme.spacing(16),
-    [theme.breakpoints.up("md")]: {
-      marginTop: -100,
-    },
+    // display:"flex",
+    // flexDirection:"column",
+    position: "absolute",
+    // top:0,
+    right:0,
+    height:"100%",
+    // height: 500,
+    // // margin: "0 -1.0785rem",
+    // marginBottom: theme.spacing(16),
+    // [theme.breakpoints.up("md")]: {
+    //   flexDirection:"row",
+    // },
   },
   infoTitle: {
     fontWeight: 700,
@@ -74,25 +84,24 @@ const useStyles = makeStyles(theme => ({
   },
   block: {
     display: "flex",
-    
-    alignItems: "center",
 
+    alignItems: "center",
   },
-  blockText:{
-    flexGrow:1,
+  blockText: {
+    flexGrow: 1,
   },
   blockImg: {
     padding: theme.spacing(2),
-    flexGrow:1,
+    flexGrow: 1,
     maxWidth: "100%",
   },
-  blockContainer:{
-    backgroundColor: "#222"
+  blockContainer: {
+    backgroundColor: "#222",
   },
-  waveBlock:{
-    display:"block",
-    fill:"#222",
-  }
+  waveBlock: {
+    display: "block",
+    fill: "#222",
+  },
   // blockText:{
   //   display:'flex',
   //   flexDirection:'column',
@@ -104,19 +113,22 @@ const IndexPage = props => {
   const classes = useStyles()
 
   const createSlogan = slogan => (
-    <div className={classes.sloganContainer}>
+    <Container maxWidth="lg" className={classes.sloganContainer}>
       <Typography variant="h1" component="div" className={classes.sloganBack}>
         {slogan}
       </Typography>
       <Typography variant="h1" className={classes.sloganFront}>
         {slogan}
       </Typography>
-    </div>
+    </Container>
   )
 
   return (
     <Layout>
       <SEO title="Home" />
+<div className={classes.splashContainer}>
+        <BlueSVG/>
+      </div>
       {createSlogan(
         <>
           <br />
@@ -125,11 +137,14 @@ const IndexPage = props => {
           Game with us.
         </>
       )}
+      {/* <Img fluid={props.data.space.childImageSharp.fluid} className={classes.splashArt}/> */}
+          
+        <CouchSVG className={classes.splashCouch} />
 
-      <div className={classes.splashContainer}>
-        <SplashSVG className={classes.splashArt} />
-      </div>
-      <Container maxWidth="lg" className={clsx(classes.block, classes.blockEven)}>
+      <Container
+        maxWidth="lg"
+        className={clsx(classes.block, classes.blockEven)}
+      >
         <DiversitySVG />
         <div className={classes.blockText}>
           <Typography variant="h3" className={classes.infoTitle}>
@@ -143,9 +158,12 @@ const IndexPage = props => {
         </div>
       </Container>
 
-      <WaveTopSVG className={classes.waveBlock}/>
+      <WaveTopSVG className={classes.waveBlock} />
       <div className={classes.blockContainer}>
-        <Container maxWidth="lg" className={clsx(classes.block, classes.blockOdd)}>
+        <Container
+          maxWidth="lg"
+          className={clsx(classes.block, classes.blockOdd)}
+        >
           <img src={joshZoom} className={classes.blockImg} />
           <div className={classes.blockText}>
             <Typography variant="h3" className={classes.infoTitle}>
@@ -158,9 +176,12 @@ const IndexPage = props => {
           </div>
         </Container>
       </div>
-      <WaveBotSVG className={classes.waveBlock}/>
+      <WaveBotSVG className={classes.waveBlock} />
 
-      <Container maxWidth="lg" className={clsx(classes.block, classes.blockEven)}>
+      <Container
+        maxWidth="lg"
+        className={clsx(classes.block, classes.blockEven)}
+      >
         <DiversitySVG />
         <div className={classes.blockText}>
           <Typography variant="h3" className={classes.infoTitle}>
@@ -185,9 +206,9 @@ const IndexPage = props => {
 
 export const pageQuery = graphql`
   query {
-    joshZoom: file(relativePath: { eq: "kgg-icon.png" }) {
+    space: file(relativePath: { eq: "space.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 300) {
+        fluid(maxWidth: 2000) {
           ...GatsbyImageSharpFluid
         }
       }

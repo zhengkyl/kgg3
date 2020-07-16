@@ -12,8 +12,7 @@ const Footer = () => {
 
   return (
       <>
-      <Link to="/page-2/">Go to page 2</Link> <br />
-      <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
+
       <div>
         Icons made by{" "}
         <a href="http://www.freepik.com/" title="Freepik">

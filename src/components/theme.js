@@ -24,12 +24,15 @@ const theme = responsiveFontSizes(
     },
     typography:{
       fontFamily:`"Heebo", "Helvetica", "Arial", sans-serif`,
-      fontFamilyMono:`"Inconsolata", "Lucida Console", "Monaco", sans-serif`,
       h1:{
         fontWeight:500,
       },
       h2:{
         fontFamily:`"Inconsolata", "Lucida Console", "Monaco", sans-serif`,
+        fontWeight:500,
+      },
+      h3:{
+        fontWeight:500,
       },
       h4:{
         fontFamily:`"Inconsolata", "Lucida Console", "Monaco", sans-serif`,
