@@ -24,12 +24,12 @@ import clsx from "clsx"
 
 import WaveTopSVG from "../assets/svgs/wave_top.svg"
 import WaveBotSVG from "../assets/svgs/wave_bot.svg"
+import WaveSVG from "../assets/svgs/wave.svg"
 
 import { makeStyles } from "@material-ui/core/styles"
 const useStyles = makeStyles(theme => ({
   sloganContainer: {
-    // position: "absolute",
-    zIndex:100,
+    zIndex: 100,
   },
   sloganBack: {
     position: "absolute",
@@ -37,30 +37,19 @@ const useStyles = makeStyles(theme => ({
     color: "#f8f93350",
   },
   sloganFront: {
-    position: "absolute",
+
   },
   splashArt: {
-    // zIndex: -1,
-    
-    // width: 700,
-    // right: 0,
+
   },
   splashCouch: {
-    // position:"relative",
   },
   splashContainer: {
-    // display:"flex",
-    // flexDirection:"column",
+
     position: "absolute",
-    // top:0,
-    right:0,
-    height:"100%",
-    // height: 500,
-    // // margin: "0 -1.0785rem",
-    // marginBottom: theme.spacing(16),
-    // [theme.breakpoints.up("md")]: {
-    //   flexDirection:"row",
-    // },
+    right: 0,
+    height: "100%",
+
   },
   infoTitle: {
     fontWeight: 700,
@@ -84,29 +73,33 @@ const useStyles = makeStyles(theme => ({
   },
   block: {
     display: "flex",
-
     alignItems: "center",
+    paddingTop:theme.spacing(4),
+    paddingBottom:theme.spacing(8),
   },
   blockText: {
-    flexGrow: 1,
+    flex: 1, 
   },
-  blockImg: {
-    padding: theme.spacing(2),
-    flexGrow: 1,
+  blockGraphic: {
+    flex: 2,
     maxWidth: "100%",
   },
-  blockContainer: {
-    backgroundColor: "#222",
+
+
+  waveBlockContainer: {
+    backgroundColor: "#1f1f1f",
   },
   waveBlock: {
     display: "block",
-    fill: "#222",
+    fill: "#1f1f1f",
   },
-  // blockText:{
-  //   display:'flex',
-  //   flexDirection:'column',
-  //   justifyContent: 'space-evenly',
-  // }
+  flipY: {
+    transform: 'scaleY(-1)'
+  },
+  spacing:{
+    height:24,
+    width:24,
+  }
 }))
 
 const IndexPage = props => {
@@ -122,13 +115,18 @@ const IndexPage = props => {
       </Typography>
     </Container>
   )
+  const createWavedBlock = children => (
+    <>
+      <WaveSVG className={classes.waveBlock} />
+      <div className={classes.waveBlockContainer}>{children}</div>
+      <WaveSVG className={clsx(classes.waveBlock, classes.flipY)} />
+    </>
+  )
 
   return (
     <Layout>
       <SEO title="Home" />
-<div className={classes.splashContainer}>
-        <BlueSVG/>
-      </div>
+
       {createSlogan(
         <>
           <br />
@@ -138,61 +136,63 @@ const IndexPage = props => {
         </>
       )}
       {/* <Img fluid={props.data.space.childImageSharp.fluid} className={classes.splashArt}/> */}
-          
-        <CouchSVG className={classes.splashCouch} />
 
-      <Container
-        maxWidth="lg"
-        className={clsx(classes.block, classes.blockEven)}
-      >
-        <DiversitySVG />
-        <div className={classes.blockText}>
-          <Typography variant="h3" className={classes.infoTitle}>
-            For everyone and anyone
-          </Typography>
-          <Typography variant="h6" className={classes.info}>
-            No matter what game you play, KGG welcomes you. We've always strived
-            for inclusiveness at KGG, because we know that games bring people
-            together.
-          </Typography>
-        </div>
-      </Container>
-
-      <WaveTopSVG className={classes.waveBlock} />
-      <div className={classes.blockContainer}>
+      <CouchSVG className={classes.splashCouch} />
+      {createWavedBlock(
         <Container
           maxWidth="lg"
-          className={clsx(classes.block, classes.blockOdd)}
+          className={clsx(classes.block, classes.blockEven)}
         >
-          <img src={joshZoom} className={classes.blockImg} />
+          <DiversitySVG className={classes.blockGraphic}/>
+          <div className={classes.spacing}></div>
           <div className={classes.blockText}>
             <Typography variant="h3" className={classes.infoTitle}>
-              Participate in legal activities with new friends.
+              For everyone and anyone
             </Typography>
             <Typography variant="h6" className={classes.info}>
-              All of our activities are legal under U.S. law in the state of
-              Indiana.
+              No matter what game you play, KGG welcomes you. We've always
+              strived for inclusiveness at KGG, because we know that games bring
+              people together.
             </Typography>
           </div>
         </Container>
-      </div>
-      <WaveBotSVG className={classes.waveBlock} />
+      )}
 
       <Container
         maxWidth="lg"
-        className={clsx(classes.block, classes.blockEven)}
+        className={clsx(classes.block, classes.blockOdd)}
       >
-        <DiversitySVG />
+        <img src={joshZoom} className={classes.blockGraphic} />
+        <div className={classes.spacing}></div>
         <div className={classes.blockText}>
           <Typography variant="h3" className={classes.infoTitle}>
-            Make memories that last beyond college.
+            Participate in legal activities with new friends.
           </Typography>
           <Typography variant="h6" className={classes.info}>
-            You might not remember the hours you spend grinding, but you'll
-            never forget the fun you've had here. That's a promise.
+            All of our activities are legal under U.S. law in the state of
+            Indiana.
           </Typography>
         </div>
       </Container>
+
+      {createWavedBlock(
+        <Container
+          maxWidth="lg"
+          className={clsx(classes.block, classes.blockEven)}
+        >
+          <DiversitySVG className={classes.blockGraphic}/>
+          <div className={classes.spacing}></div>
+          <div className={classes.blockText}>
+            <Typography variant="h3" className={classes.infoTitle}>
+              Make memories that last beyond college.
+            </Typography>
+            <Typography variant="h6" className={classes.info}>
+              You might not remember the hours you spend grinding, but you'll
+              never forget the fun you've had here. That's a promise.
+            </Typography>
+          </div>
+        </Container>
+      )}
 
       <Typography variant="h3" className={classes.infoTitle}>
         Ready to join?
