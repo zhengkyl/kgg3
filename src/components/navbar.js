@@ -85,7 +85,7 @@ const useStyles = makeStyles(theme => ({
 const pages = [
   { title: "Home", path: "/" },
   { title: "News", path: "/news" },
-  { title: "People", path: "/people" },
+  { title: "Members", path: "/members" },
   { title: "Contact", path: "/contact" },
 ]
 

@@ -36,9 +36,14 @@ const theme = responsiveFontSizes(
       },
       h4:{
         fontFamily:`"Inconsolata", "Lucida Console", "Monaco", sans-serif`,
+        fontWeight:500,
+      },
+      h5:{
+        fontWeight:500,
       },
       h6:{
         fontFamily:`"Inconsolata", "Lucida Console", "Monaco", sans-serif`,
+        fontWeight:500,
       }
     }
   })  
