@@ -18,34 +18,26 @@ import { ThemeProvider, Container } from "@material-ui/core"
 import theme from "./theme"
 
 const Layout = ({ children }) => {
-
   return (
-
     <ThemeProvider theme={theme}>
       <React.Fragment>
         <Helmet>
-          <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet"/> 
-          <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;500;700&display=swap" rel="stylesheet"/> 
+          <link
+            href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap"
+            rel="stylesheet"
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;500;700&display=swap"
+            rel="stylesheet"
+          />
         </Helmet>
-        <CssBaseline/>
-        <Navbar/>
-        {/* <Container maxWidth="lg"
-          // style={{
-          //   margin: `0 auto`,
-          //   maxWidth: 960,
-          //   padding: `0 1.0875rem 1.45rem`,
-          //   overflowX: `hidden`,
-          // }}
-        > */}
-          
+        <CssBaseline />
+        {/* This is needed for the footer to always be at the bottom of the page, regardless of page size */}
+        <div style={{position:"relative", minHeight:"100vh"}}>
+          <Navbar />
           <main>{children}</main>
-          <footer>
-            <Footer/>
-            © {new Date().getFullYear()}, Built with
-            {` `}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
-          </footer>
-        {/* </Container> */}
+          <Footer />
+        </div>
       </React.Fragment>
     </ThemeProvider>
   )
