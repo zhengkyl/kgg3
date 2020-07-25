@@ -6,9 +6,12 @@ import { makeStyles } from "@material-ui/core/styles"
 import { Container, Typography } from "@material-ui/core"
 const useStyles = makeStyles(theme => ({
   footer:{
-    position: "absolute",
-    bottom: 0,
-    width:"100%",
+    display:"flex",
+    flexDirection:"column",
+    flex:1,
+  },
+  footerContent:{
+    // flex:1,
   }
 }))
 
@@ -20,7 +23,7 @@ const Footer = () => {
     <footer className={classes.footer}>
       
       <WaveBlock flatBottom={true}>
-        <Container maxWidth="lg">
+        <Container maxWidth="lg" className={classes.footerContent}>
 <Typography variant="caption">{`© ${new Date().getFullYear()}, Built with <3 by KGG`}</Typography>
         <div>
         Icons made by{" "}

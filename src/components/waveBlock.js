@@ -7,6 +7,7 @@ import { makeStyles } from "@material-ui/core/styles"
 const useStyles = makeStyles(theme => ({
   waveBlockContainer: {
     backgroundColor: "#1f1f1f",
+    flex:1,
   },
   waveBlock: {
     display: "block",

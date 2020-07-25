@@ -7,7 +7,7 @@ import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons"
 import { faWindowMaximize } from "@fortawesome/free-solid-svg-icons"
 
 import SEO from "../components/seo"
-
+import clsx from "clsx"
 import { Container, Grid, IconButton, Typography } from "@material-ui/core"
 
 import { makeStyles } from "@material-ui/core/styles"
@@ -15,7 +15,6 @@ import Layout from "../components/layout"
 const useStyles = makeStyles(theme => ({
   gridContainer: {
     display: "flex",
-    // flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-evenly",
   },
@@ -35,17 +34,24 @@ const useStyles = makeStyles(theme => ({
     marginTop: `0.8em`,
     textShadow: `-0.05em 0.04em ${theme.palette.primary.dark}`,
   },
+  sectionTitle: {
+    color: theme.palette.primary.main,
+  },
   socialIcon: {
     margin: theme.spacing(1),
     color: theme.palette.text.primary,
-    "&:hover":{
-      color:theme.palette.primary.light
-    }
+    "&:hover": {
+      color: theme.palette.primary.light,
+    },
   },
   memberDesc: {
     color: theme.palette.text.secondary,
     marginBottom: theme.spacing(1),
   },
+  centerText:{
+    textAlign:"center",
+    marginTop: theme.spacing(2)
+  }
 }))
 
 const MembersPage = props => {
@@ -65,17 +71,14 @@ const MembersPage = props => {
     <>
       <SEO title="Members" />
       <Container maxWidth="lg">
-        <Typography variant="h1" component="h2" className={classes.blockyText}>
-          Looking to join?
-        </Typography>
-        <Typography variant="h4">
-          KGG is always looking for more talented and talentless individuals.
-          More info about Fall 2020 recruitment coming soon!
-        </Typography>
-
         <Typography variant="h1" className={classes.blockyText}>
           Members
         </Typography>
+
+        <Typography variant="h3" className={clsx(classes.sectionTitle, classes.centerText)}>
+          Ranked by Epicness
+        </Typography>
+        
         <div className={classes.gridContainer}>
           {createProfileContainer(
             props.data.kyleZheng.childImageSharp.fluid,
@@ -117,6 +120,13 @@ const MembersPage = props => {
             "A cool person"
           )} */}
         </div>
+        <Typography variant="h3" className={classes.sectionTitle}>
+          Looking to join?
+        </Typography>
+        <Typography variant="h6">
+          KGG is always looking for more talented and talentless individuals.
+          More info about Fall 2020 recruitment coming soon!
+        </Typography>
       </Container>
     </>
   )
