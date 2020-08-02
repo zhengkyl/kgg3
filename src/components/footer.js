@@ -23,13 +23,14 @@ const useStyles = makeStyles(theme => ({
     },
   },
   footerContent: {
-    marginTop:theme.spacing(2),
-
+    marginTop:theme.spacing(4),
+    marginBottom:theme.spacing(1),
   },
   sectionTitle: {
     // color: theme.palette.primary.main,
   },
   attribution: {
+    textAlign:'center',
     color: theme.palette.text.primary,
     "& span": {
       display: "inline-block",
@@ -40,7 +41,8 @@ const useStyles = makeStyles(theme => ({
     },
   },
   socialLinks: {
-    margin: `0 ${theme.spacing(1)}px`,
+    // margin: `0 ${theme.spacing(1)}px`,
+    padding: theme.spacing(1),
     // color: theme.palette.text.primary,
     // "&:hover": {
     //   color: theme.palette.primary.main,
@@ -50,7 +52,7 @@ const useStyles = makeStyles(theme => ({
     display:'flex',
     flexDirection:'row-reverse',
     alignItems:'center',
-    marginBottom:theme.spacing(1),
+    
     marginTop:theme.spacing(1),
     fontFamily: theme.typography.fontFamilyMono,
   }
@@ -81,21 +83,21 @@ const Footer = () => {
             </Typography>
           </div>
           <div className={classes.bottomText}>
-            <Typography variant="caption">{`© ${new Date().getFullYear()}, Built with <3 by KGG`}</Typography>
+            <Typography variant="caption">{`© KGG ${new Date().getFullYear()}, Built with <3 by @zhengkyl`}</Typography>
             
             <a
               className={classes.socialLinks}
               href="https://twitter.com/kappagaga"
               target="_blank"
             >
-              <FontAwesomeIcon icon={faTwitter} size="2x" />
+              <FontAwesomeIcon icon={faTwitter} size="lg" />
             </a>
             <a
               className={classes.socialLinks}
               href="https://www.instagram.com/kappagaga/"
               target="_blank"
             >
-              <FontAwesomeIcon icon={faInstagram} size="2x" />
+              <FontAwesomeIcon icon={faInstagram} size="lg" />
             </a>
           </div>
         </Container>

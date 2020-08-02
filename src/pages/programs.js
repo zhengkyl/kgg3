@@ -11,22 +11,60 @@ import { Container, Grid, IconButton, Typography } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 import Layout from "../components/layout"
 const useStyles = makeStyles(theme => ({
-  
+  blockyText: {
+    marginTop: `0.8em`,
+    textShadow: `-0.05em 0.04em ${theme.palette.primary.dark}`,
+  },
+  sectionTitle:{
+    color: theme.palette.primary.main,
+  }
 }))
 
 const ProgramsPage = props => {
   const classes = useStyles()
 
+  const createProgramBlock = (title) => (
+    <>
+      <Typography variant="h5" className={classes.sectionTitle}>{title}</Typography>
+      
+    </>
+  )
 
   return (
     <>
-      <SEO title="Members" />
+      <SEO title="Programs" />
       <Container maxWidth="lg">
-        <Typography variant="h1">News</Typography>
-        
+        <Typography variant="h1" className={classes.blockyText}>Programs</Typography>
+        <Typography variant="h4">KGG is proud to run the following events</Typography>
+        {createProgramBlock("Ramen Night")}        
       </Container>
     </>
   )
 }
-{/* <span>Photo by <a href="https://unsplash.com/@charlesdeluvio?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Charles Deluvio</a> on <a href="https://unsplash.com/s/photos/cactus?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span> */}
+
+export const pageQuery = graphql`
+  query {
+    kyleZheng: file(relativePath: { eq: "kyle_zheng.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 300) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    kggGroup: file(relativePath: { eq: "kgg_group.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 300) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    cactus: file(relativePath: { eq: "cactus.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 300) {
+          ...GatsbyImageSharpFluid_noBase64
+        }
+      }
+    }
+  }
+`
 export default ProgramsPage

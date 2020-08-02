@@ -38,7 +38,8 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.primary.main,
   },
   socialIcon: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(0.5),
+    padding: theme.spacing(1),
     color: theme.palette.text.primary,
     "&:hover": {
       color: theme.palette.primary.light,
