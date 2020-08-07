@@ -106,14 +106,6 @@ const IndexPage = props => {
   console.log(props)
   const classes = useStyles()
 
-  // const createWavedBlock = children => (
-  //   <>
-  //     <WaveSVG className={classes.waveBlock} />
-  //     <div className={classes.waveBlockContainer}>{children}</div>
-  //     <WaveSVG className={clsx(classes.waveBlock, classes.flipY)} />
-  //   </>
-  // )
-
   return (
     <>
       <SEO title="Home" />

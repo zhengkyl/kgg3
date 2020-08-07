@@ -8,7 +8,7 @@ import { faWindowMaximize } from "@fortawesome/free-solid-svg-icons"
 
 import SEO from "../components/seo"
 import clsx from "clsx"
-import { Container, Grid, IconButton, Typography } from "@material-ui/core"
+import { Container, Typography } from "@material-ui/core"
 
 import { makeStyles } from "@material-ui/core/styles"
 import Layout from "../components/layout"
@@ -49,23 +49,23 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.text.secondary,
     marginBottom: theme.spacing(1),
   },
-  centerText:{
-    textAlign:"center",
-    marginTop: theme.spacing(2)
-  }
+  centerText: {
+    textAlign: "center",
+    marginTop: theme.spacing(2),
+  },
 }))
 
 const MembersPage = props => {
   const classes = useStyles()
 
-  const createProfileContainer = (fluidImage, nameText, descText, links) => (
+  const ProfileContainer = ({ fluidImage, name, desc, children }) => (
     <span className={classes.gridItem}>
       <Img fluid={fluidImage} className={classes.image} />
-      <Typography variant="h5">{nameText}</Typography>
+      <Typography variant="h5">{name}</Typography>
       <Typography variant="h6" className={classes.memberDesc}>
-        {descText}
+        {desc}
       </Typography>
-      <div>{links}</div>
+      <div>{children}</div>
     </span>
   )
   return (
@@ -76,50 +76,47 @@ const MembersPage = props => {
           Members
         </Typography>
 
-        <Typography variant="h3" className={clsx(classes.sectionTitle, classes.centerText)}>
+        <Typography
+          variant="h3"
+          className={clsx(classes.sectionTitle, classes.centerText)}
+        >
           Ranked by Epicness
         </Typography>
-        
-        <div className={classes.gridContainer}>
-          {createProfileContainer(
-            props.data.kyleZheng.childImageSharp.fluid,
-            "Kyle Zheng",
-            "made this website",
-            <>
-              <a
-                href="https://www.kylezheng.tech/"
-                target="_blank"
-                className={classes.socialIcon}
-              >
-                <FontAwesomeIcon icon={faWindowMaximize} size="lg" />
-              </a>
-              <a
-                href="https://github.com/zhengkyl"
-                target="_blank"
-                className={classes.socialIcon}
-              >
-                <FontAwesomeIcon icon={faGithub} size="lg" />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/kyle-zheng-9b2546145/"
-                target="_blank"
-                className={classes.socialIcon}
-              >
-                <FontAwesomeIcon icon={faLinkedin} size="lg" />
-              </a>
-            </>
-          )}
 
-          {createProfileContainer(
-            props.data.kggGroup.childImageSharp.fluid,
-            "Others",
-            "did not make this website"
-          )}
-          {/* {createProfileContainer(
-            props.data.cactus.childImageSharp.fluid,
-            "You",
-            "A cool person"
-          )} */}
+        <div className={classes.gridContainer}>
+          <ProfileContainer
+            fluidImage={props.data.kyleZheng.childImageSharp.fluid}
+            name="Kyle Zheng"
+            desc="made this website"
+          >
+            <a
+              href="https://www.kylezheng.tech/"
+              target="_blank"
+              className={classes.socialIcon}
+            >
+              <FontAwesomeIcon icon={faWindowMaximize} size="lg" />
+            </a>
+            <a
+              href="https://github.com/zhengkyl"
+              target="_blank"
+              className={classes.socialIcon}
+            >
+              <FontAwesomeIcon icon={faGithub} size="lg" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/kyle-zheng-9b2546145/"
+              target="_blank"
+              className={classes.socialIcon}
+            >
+              <FontAwesomeIcon icon={faLinkedin} size="lg" />
+            </a>
+          </ProfileContainer>
+
+          <ProfileContainer
+            fluidImage={props.data.kggGroup.childImageSharp.fluid}
+            name="Others"
+            desc="did not make this website"
+          />
         </div>
         <Typography variant="h3" className={classes.sectionTitle}>
           Looking to join?

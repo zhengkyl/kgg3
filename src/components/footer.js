@@ -23,14 +23,14 @@ const useStyles = makeStyles(theme => ({
     },
   },
   footerContent: {
-    marginTop:theme.spacing(4),
-    marginBottom:theme.spacing(1),
+    marginTop: theme.spacing(4),
+    marginBottom: theme.spacing(1),
   },
   sectionTitle: {
     // color: theme.palette.primary.main,
   },
   attribution: {
-    textAlign:'center',
+    textAlign: "center",
     color: theme.palette.text.primary,
     "& span": {
       display: "inline-block",
@@ -48,14 +48,14 @@ const useStyles = makeStyles(theme => ({
     //   color: theme.palette.primary.main,
     // },
   },
-  bottomText:{
-    display:'flex',
-    flexDirection:'row-reverse',
-    alignItems:'center',
-    
-    marginTop:theme.spacing(1),
-    fontFamily: theme.typography.fontFamilyMono,
-  }
+  bottomText: {
+    display: "flex",
+    flexDirection: "row-reverse",
+    alignItems: "center",
+
+    marginTop: theme.spacing(1),
+    // fontFamily: theme.typography.fontFamilyMono,
+  },
 }))
 
 const Footer = () => {
@@ -83,8 +83,13 @@ const Footer = () => {
             </Typography>
           </div>
           <div className={classes.bottomText}>
-            <Typography variant="caption">{`© KGG ${new Date().getFullYear()}, Built with <3 by @zhengkyl`}</Typography>
-            
+            <Typography variant="caption">
+              {`© KGG ${new Date().getFullYear()}, Built with <3 by `}
+              <a href="https://www.kylezheng.tech" target="_blank">
+                @zhengkyl
+              </a>
+            </Typography>
+
             <a
               className={classes.socialLinks}
               href="https://twitter.com/kappagaga"

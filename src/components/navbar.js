@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
   appBar: {
     zIndex: 1400,
     justifyContent: "center",
-    flexDirection:'row',
+    flexDirection: "row",
   },
   list: {
     padding: 0,
@@ -70,8 +70,8 @@ const useStyles = makeStyles(theme => ({
   },
   toolbar: {
     alignItems: "stretch",
-    justifyContent:'space-between',
-    flexGrow:1,
+    justifyContent: "space-between",
+    flexGrow: 1,
     maxWidth: theme.breakpoints.width("lg"),
   },
 
@@ -79,6 +79,9 @@ const useStyles = makeStyles(theme => ({
     marginTop: "auto",
     marginBottom: "auto",
     padding: theme.spacing(3),
+  },
+  displayText: {
+    fontFamily: `"Heebo", "Helvetica", "Arial", sans-serif`,
   },
 }))
 
@@ -89,7 +92,7 @@ const pages = [
   { title: "Contact", path: "/contact" },
 ]
 
-function HideOnScroll({children}) {
+function HideOnScroll({ children }) {
   // const { children, window } = props
   const trigger = useScrollTrigger()
 
@@ -109,7 +112,7 @@ export default function Navbar() {
     setOpen(open)
   }
 
-  const mobileList = () => (
+  const MobileList = () => (
     <List className={classes.list}>
       {pages.map(page => (
         <Typography variant="h5" component="li" key={page.title}>
@@ -127,7 +130,7 @@ export default function Navbar() {
       <Divider className={classes.divider} />
     </List>
   )
-  const desktopList = () => (
+  const DesktopList = () => (
     <List className={classes.list}>
       {pages.map(page => (
         <ListItem
@@ -140,7 +143,9 @@ export default function Navbar() {
             className={classes.link}
             activeClassName={classes.activeLink}
           >
-            <Typography variant="subtitle2">{page.title}</Typography>
+            <Typography variant="subtitle2" className={classes.displayText}>
+              {page.title}
+            </Typography>
           </Link>
         </ListItem>
       ))}
@@ -170,8 +175,9 @@ export default function Navbar() {
                 <MenuIcon open={open}></MenuIcon>
               </IconButton>
             </Hidden>
-
-            <Hidden xsDown>{desktopList()}</Hidden>
+            <Hidden xsDown>
+              <DesktopList />
+            </Hidden>
           </Toolbar>
         </AppBar>
       </HideOnScroll>
@@ -180,7 +186,7 @@ export default function Navbar() {
         <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
           {/* Spacing element to pad top of drawer with height of appbar */}
           <Toolbar />
-          {mobileList()}
+          <MobileList />
         </Drawer>
       </Hidden>
 

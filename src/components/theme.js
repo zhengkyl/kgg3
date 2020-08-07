@@ -23,30 +23,26 @@ const theme = responsiveFontSizes(
       }
     },
     typography:{
-      fontFamily:`"Heebo", "Helvetica", "Arial", sans-serif`,
-      
-      caption:{
-        fontFamily:`"Inconsolata", "Lucida Console", "Monaco", sans-serif`,
-      },
+      fontFamily:`"Inconsolata", "Lucida Console", "Monaco", sans-serif`,
       h1:{
+        fontFamily:`"Heebo", "Helvetica", "Arial", sans-serif`,
         fontWeight:500,
       },
       h2:{
-        fontFamily:`"Inconsolata", "Lucida Console", "Monaco", sans-serif`,
         fontWeight:500,
       },
       h3:{
+        fontFamily:`"Heebo", "Helvetica", "Arial", sans-serif`,
         fontWeight:500,
       },
       h4:{
-        fontFamily:`"Inconsolata", "Lucida Console", "Monaco", sans-serif`,
         fontWeight:500,
       },
       h5:{
+        fontFamily:`"Heebo", "Helvetica", "Arial", sans-serif`,
         fontWeight:500,
       },
       h6:{
-        fontFamily:`"Inconsolata", "Lucida Console", "Monaco", sans-serif`,
         fontWeight:500,
       }
     }

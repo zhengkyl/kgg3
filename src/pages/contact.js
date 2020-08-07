@@ -30,12 +30,12 @@ const useStyles = makeStyles(theme => ({
 const ContactPage = props => {
   const classes = useStyles()
 
-  const createFaqBlock = (questionText, answerText) => (
+  const FaqBlock = ({question, answer}) => (
     <>
       <Typography variant="h3" className={classes.question}>
-        {questionText}
+        {question}
       </Typography>
-      <Typography variant="h6">{answerText}</Typography>
+      <Typography variant="h6">{answer}</Typography>
     </>
   )
   return (
@@ -56,11 +56,10 @@ const ContactPage = props => {
         <Typography variant="h1" className={classes.blockyText}>
           FAQ
         </Typography>
-        {
-          FAQData.content.map((item, index) => (
-            createFaqBlock(item.question, item.answer)
-          ))
-        }
+        {FAQData.content.map((item, index) => (
+          <FaqBlock question={item.question} answer={item.answer} />
+          // createFaqBlock(item.question, item.answer
+        ))}
       </Container>
     </>
   )
