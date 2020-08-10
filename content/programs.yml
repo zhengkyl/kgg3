@@ -1,0 +1,25 @@
+content:
+  - item:
+    title: Ramen Night
+    desc: Eat ramen at night
+    imgName: ramenNight
+  - item:
+    title: Group Therapy
+    desc: Let's talk
+    imgName: duo
+  - item:
+    title: Legal Counsel
+    desc: "*not legal advice"
+    imgName: legal
+  - item:
+    title: Fashion Week
+    desc: Wear clothes all week
+    imgName: slide
+  - item:
+    title: Study Night
+    desc: Studying after dark
+    imgName: study
+  - item:
+    title: Math Tutoring
+    desc: Multiply your knowledge
+    imgName: tutor

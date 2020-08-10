@@ -4,12 +4,22 @@ import Img from "gatsby-image"
 import clsx from "clsx"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
+import {
+  CarouselProvider,
+  Slider,
+  Slide,
+  ButtonBack,
+  ButtonNext,
+} from "pure-react-carousel"
+import "pure-react-carousel/dist/react-carousel.es.css"
+
+import useMediaQuery from "@material-ui/core/useMediaQuery"
 import SEO from "../components/seo"
 
 import { Container, Grid, IconButton, Typography } from "@material-ui/core"
 
 import { makeStyles } from "@material-ui/core/styles"
-import Layout from "../components/layout"
+import ProgramsData from "../../content/programs.yml"
 const useStyles = makeStyles(theme => ({
   blockyText: {
     marginTop: `0.8em`,
@@ -18,29 +28,31 @@ const useStyles = makeStyles(theme => ({
   sectionTitle: {
     color: theme.palette.primary.main,
   },
-  colorBlock: {
-    backgroundColor: theme.palette.primary.main,
-    borderRadius: theme.spacing(1),
-    height: 100,
-  },
   blockImg: {
-    // maxWidth: 600,
-    minWidth: 270,
+
+    width:240,
   },
   programBlock: {
-    backgroundColor: "#1f1f1f",
+    backgroundColor: "#1a1a1a",
     borderRadius: theme.spacing(2),
     overflow: "hidden",
-    margin: theme.spacing(1),
-    // marginRight:theme.spacing(1),
+    marginRight:40,
+    width:240,
+
   },
   programsBlock: {
-    display: "flex",
+    // display: "flex",
     // flexWrap:'wrap',
   },
   programText: {
     padding: theme.spacing(2),
   },
+  container:{
+    overflow:'hidden',
+  },
+  slider:{
+    overflow:'visible'
+  }
 }))
 
 const ProgramsPage = props => {
@@ -63,61 +75,62 @@ const ProgramsPage = props => {
   return (
     <>
       <SEO title="Programs" />
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" className={classes.container}>
         <Typography variant="h1" className={classes.blockyText}>
           Programs
         </Typography>
         <Typography variant="h4">
           KGG is proud to run the following events
         </Typography>
-      </Container>
-      <div className={classes.programsBlock}>
-        <ProgramBlock title="Ramen Night" desc="Eat ramen at night">
-          <Img
-            fluid={props.data.ramenNight.childImageSharp.fluid}
-            className={classes.blockImg}
-          />
-        </ProgramBlock>
-        <ProgramBlock title="Ramen Night" desc="Eat ramen at night">
-          <Img
-            fluid={props.data.study.childImageSharp.fluid}
-            className={classes.blockImg}
-          />
-        </ProgramBlock>
-        <ProgramBlock title="Fashion Week" desc="Wear clothes all week">
-          <Img
-            fluid={props.data.slide.childImageSharp.fluid}
-            className={classes.blockImg}
-          />
-        </ProgramBlock>
-        {/* <ProgramBlock title="Youth Mentoring" desc="Help underprivileged youth">
-            <Img fluid={props.data.mentorship.childImageSharp.fluid} className={classes.blockImg}/>
-          </ProgramBlock> */}
-        <ProgramBlock title="Group Therapy" desc="Let's talk about stuff">
-          <Img
-            fluid={props.data.duo.childImageSharp.fluid}
-            className={classes.blockImg}
-          />
-        </ProgramBlock>
-        {/* <ProgramBlock title="Personal Trainer" desc='1 on 1 private "lessons"'>
-            <Img fluid={props.data.advice.childImageSharp.fluid} className={classes.blockImg}/>
-          </ProgramBlock> */}
-        <ProgramBlock title="Legal Counsel" desc="*not an attorney replacement">
-          <Img
-            fluid={props.data.legal.childImageSharp.fluid}
-            className={classes.blockImg}
-          />
-        </ProgramBlock>
-        <ProgramBlock
-          title="Math Tutoring"
-          desc="Acquire mathematical knowledge"
+      
+      <CarouselProvider
+        isIntrinsicHeight
+        currentSlide={6}
+        visibleSlides={4}
+        totalSlides={18}
+        // There is a difference of 4 slides between mobile and desktop view.
+        //width of cards + width of card margins
+        style={{width:(4 * 240) + (4*40)}}
         >
-          <Img
-            fluid={props.data.tutor.childImageSharp.fluid}
-            className={classes.blockImg}
-          />
-        </ProgramBlock>
-      </div>
+
+
+      <Slider className={classes.slider}>
+        {ProgramsData.content.map((item, index)=>(
+          <Slide index={index}>
+            <ProgramBlock title={item.title} desc={item.desc}>
+              <Img
+                fluid={props.data[item.imgName].childImageSharp.fluid}
+                className={classes.blockImg}
+              />
+            </ProgramBlock>
+          </Slide>
+        ))}
+        {ProgramsData.content.map((item, index)=>(
+          <Slide index={index+6}>
+            <ProgramBlock title={item.title} desc={item.desc}>
+              <Img
+                fluid={props.data[item.imgName].childImageSharp.fluid}
+                className={classes.blockImg}
+              />
+            </ProgramBlock>
+          </Slide>
+        ))}
+        {ProgramsData.content.map((item, index)=>(
+          <Slide index={index+12}>
+            <ProgramBlock title={item.title} desc={item.desc}>
+              <Img
+                fluid={props.data[item.imgName].childImageSharp.fluid}
+                className={classes.blockImg}
+              />
+            </ProgramBlock>
+          </Slide>
+        ))}
+
+      </Slider>
+
+         
+      </CarouselProvider>
+      </Container>
     </>
   )
 }

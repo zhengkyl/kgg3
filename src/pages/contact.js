@@ -10,7 +10,7 @@ import { Container, Grid, IconButton, Typography } from "@material-ui/core"
 
 import { makeStyles } from "@material-ui/core/styles"
 import Layout from "../components/layout"
-import FAQData from "../../content/faq.yaml"
+import FAQData from "../../content/faq.yml"
 const useStyles = makeStyles(theme => ({
   blockyText: {
     marginTop: `0.8em`,
