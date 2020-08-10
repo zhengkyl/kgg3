@@ -29,16 +29,14 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.primary.main,
   },
   blockImg: {
-
-    width:240,
+    width: 240,
   },
   programBlock: {
     backgroundColor: "#1a1a1a",
     borderRadius: theme.spacing(2),
     overflow: "hidden",
-    marginRight:40,
-    width:240,
-
+    marginRight: 36,
+    width: 240,
   },
   programsBlock: {
     // display: "flex",
@@ -47,17 +45,25 @@ const useStyles = makeStyles(theme => ({
   programText: {
     padding: theme.spacing(2),
   },
-  container:{
-    overflow:'hidden',
+  container: {
+    overflow: "hidden",
   },
-  slider:{
-    overflow:'visible'
-  }
+  slider: {
+    overflow: "visible",
+  },
 }))
 
 const ProgramsPage = props => {
   const classes = useStyles()
 
+  const atLeastSm = useMediaQuery(theme => theme.breakpoints.up("sm"))
+  const atLeastMd = useMediaQuery(theme => theme.breakpoints.up("md"))
+  const atLeastLg = useMediaQuery(theme => theme.breakpoints.up("lg"))
+
+  const visibleCards =
+    (atLeastLg && 4) || (atLeastMd && 3) || (atLeastSm && 2) || 1
+
+  const totalCards = ProgramsData.content.length
   const ProgramBlock = ({ title, desc, children }) => (
     <>
       <div className={classes.programBlock}>
@@ -71,7 +77,6 @@ const ProgramsPage = props => {
       </div>
     </>
   )
-
   return (
     <>
       <SEO title="Programs" />
@@ -82,54 +87,30 @@ const ProgramsPage = props => {
         <Typography variant="h4">
           KGG is proud to run the following events
         </Typography>
-      
-      <CarouselProvider
-        isIntrinsicHeight
-        currentSlide={6}
-        visibleSlides={4}
-        totalSlides={18}
-        // There is a difference of 4 slides between mobile and desktop view.
-        //width of cards + width of card margins
-        style={{width:(4 * 240) + (4*40)}}
+
+        <CarouselProvider
+          isIntrinsicHeight
+          currentSlide={totalCards}
+          visibleSlides={visibleCards}
+          totalSlides={totalCards * 3}
+          //width of cards + width of card margins
+          style={{ width: visibleCards * 240 + visibleCards * 36 }}
         >
-
-
-      <Slider className={classes.slider}>
-        {ProgramsData.content.map((item, index)=>(
-          <Slide index={index}>
-            <ProgramBlock title={item.title} desc={item.desc}>
-              <Img
-                fluid={props.data[item.imgName].childImageSharp.fluid}
-                className={classes.blockImg}
-              />
-            </ProgramBlock>
-          </Slide>
-        ))}
-        {ProgramsData.content.map((item, index)=>(
-          <Slide index={index+6}>
-            <ProgramBlock title={item.title} desc={item.desc}>
-              <Img
-                fluid={props.data[item.imgName].childImageSharp.fluid}
-                className={classes.blockImg}
-              />
-            </ProgramBlock>
-          </Slide>
-        ))}
-        {ProgramsData.content.map((item, index)=>(
-          <Slide index={index+12}>
-            <ProgramBlock title={item.title} desc={item.desc}>
-              <Img
-                fluid={props.data[item.imgName].childImageSharp.fluid}
-                className={classes.blockImg}
-              />
-            </ProgramBlock>
-          </Slide>
-        ))}
-
-      </Slider>
-
-         
-      </CarouselProvider>
+          <Slider className={classes.slider}>
+            {[0,1,2].map((iteration) =>
+              ProgramsData.content.map((item, index) => (
+                <Slide index={index + iteration * totalCards}>
+                  <ProgramBlock title={item.title} desc={item.desc}>
+                    <Img
+                      fluid={props.data[item.imgName].childImageSharp.fluid}
+                      className={classes.blockImg}
+                    />
+                  </ProgramBlock>
+                </Slide>
+              ))
+            )}
+          </Slider>
+        </CarouselProvider>
       </Container>
     </>
   )
