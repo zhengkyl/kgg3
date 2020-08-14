@@ -6,8 +6,9 @@ https://www.freepik.com/free-vector/online-games-concept_7915209.htm#query=relax
 https://www.freepik.com/free-vector/player-characters-online-game-concept_8131809.htm
 https://www.freepik.com/free-vector/couple-playing-video-games-home_7333726.htm
 
-
-
+https://www.freepik.com/free-vector/woman-addicted-social-media_6402798.htm#query=flat%20illustration&position=1
+<a href='https://www.freepik.com/vectors/people'>People vector created by freepik - www.freepik.com</a>
+https://www.freepik.com/free-vector/group-young-people-posing-photo_5230711.htm
 https://www.freepik.com/free-vector/space-illustration-night-alien-fantasy-landscape_5603523.htm#page=1&query=fantasy%20landscape&position=14
 
 # Known Issues

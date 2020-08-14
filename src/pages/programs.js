@@ -3,7 +3,10 @@ import { graphql, Link } from "gatsby"
 import Img from "gatsby-image"
 import clsx from "clsx"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-
+import { faCaretLeft } from "@fortawesome/free-solid-svg-icons"
+import { faCaretRight } from "@fortawesome/free-solid-svg-icons"
+// import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+// import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import {
   CarouselProvider,
   Slider,
@@ -12,6 +15,7 @@ import {
   ButtonNext,
 } from "pure-react-carousel"
 import "pure-react-carousel/dist/react-carousel.es.css"
+import { WithStore } from "pure-react-carousel"
 
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 import SEO from "../components/seo"
@@ -35,12 +39,9 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "#1a1a1a",
     borderRadius: theme.spacing(2),
     overflow: "hidden",
-    marginRight: 36,
+    marginLeft:theme.spacing(2),
+    marginRight:theme.spacing(2),
     width: 240,
-  },
-  programsBlock: {
-    // display: "flex",
-    // flexWrap:'wrap',
   },
   programText: {
     padding: theme.spacing(2),
@@ -48,9 +49,27 @@ const useStyles = makeStyles(theme => ({
   container: {
     overflow: "hidden",
   },
-  slider: {
-    overflow: "visible",
+  carousel:{
+    display:'flex',
+    justifyContent:'center',
+    alignItems:'center',
   },
+  button:{
+    zIndex:1000,
+    backgroundColor: "transparent",
+    width:32,
+    height:32,
+    border:"none",
+    color: "#fff",
+    borderRadius:"50%",
+    transform:'translate(-50%,0)',
+    "&:first-child":{
+      transform:'translate(50%,0)',
+    },
+    "&:hover":{
+      backgroundColor:"#ffffff20"
+    }
+  }
 }))
 
 const ProgramsPage = props => {
@@ -64,6 +83,7 @@ const ProgramsPage = props => {
     (atLeastLg && 4) || (atLeastMd && 3) || (atLeastSm && 2) || 1
 
   const totalCards = ProgramsData.content.length
+
   const ProgramBlock = ({ title, desc, children }) => (
     <>
       <div className={classes.programBlock}>
@@ -77,6 +97,7 @@ const ProgramsPage = props => {
       </div>
     </>
   )
+
   return (
     <>
       <SEO title="Programs" />
@@ -87,17 +108,20 @@ const ProgramsPage = props => {
         <Typography variant="h4">
           KGG is proud to run the following events
         </Typography>
-
         <CarouselProvider
           isIntrinsicHeight
           currentSlide={totalCards}
           visibleSlides={visibleCards}
           totalSlides={totalCards * 3}
           //width of cards + width of card margins
-          style={{ width: visibleCards * 240 + visibleCards * 36 }}
+          className={classes.carousel}
         >
-          <Slider className={classes.slider}>
-            {[0,1,2].map((iteration) =>
+          <ButtonBack className={classes.button}>
+            <FontAwesomeIcon icon={faCaretLeft} size="2x"/>
+          </ButtonBack>
+          
+          <Slider style={{ width: visibleCards * 240 + visibleCards * 32, overflow:'visible'}}>
+            {[0, 1, 2].map(iteration =>
               ProgramsData.content.map((item, index) => (
                 <Slide index={index + iteration * totalCards}>
                   <ProgramBlock title={item.title} desc={item.desc}>
@@ -110,6 +134,9 @@ const ProgramsPage = props => {
               ))
             )}
           </Slider>
+          <ButtonNext className={classes.button}>
+            <FontAwesomeIcon icon={faCaretRight} size="2x"/>
+          </ButtonNext>
         </CarouselProvider>
       </Container>
     </>

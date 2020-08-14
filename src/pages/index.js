@@ -12,23 +12,34 @@ import WaveBlock from "../components/waveBlock"
 
 import CouchSVG from "../assets/svgs/couch_yellow.svg"
 import DiversitySVG from "../assets/svgs/diversity.svg"
-import joshZoom from "../assets/images/josh_zoom.gif"
+import MascotSVG from "../assets/svgs/mascot.svg"
+import WaveSVG from "../assets/svgs/wave.svg"
+
+// import joshZoom from "../assets/images/josh_zoom.gif"
+import joshLike from "../assets/images/like_gif.gif"
+
 import clsx from "clsx"
 
-import WaveSVG from "../assets/svgs/wave.svg"
 import "../components/pageclip.css"
 import { makeStyles } from "@material-ui/core/styles"
 const useStyles = makeStyles(theme => ({
-  sloganContainer: {
-    zIndex: 100,
-    height: "400px",
+  main: {
+    display: "flex",
+    minHeight: `80vh`,
+    flexDirection: "column",
+    justifyContent: "space-between",
+    [theme.breakpoints.up("md")]: {
+      flexDirection: "row",
+    },
   },
-  splashArt: {},
-  splashCouch: {},
-  splashContainer: {
-    position: "absolute",
-    right: 0,
-    height: "100%",
+  sloganContainer: {
+    "& del": {
+      color: theme.palette.primary.main,
+    },
+  },
+  mascot: {
+    maxWidth: 800,
+    // marginTop: 80,
   },
   infoTitle: {
     fontWeight: 700,
@@ -116,15 +127,21 @@ const IndexPage = props => {
           charset="utf-8"
         ></script>
       </Helmet>
-      <Container maxWidth="lg" className={classes.sloganContainer}>
-        <Typography variant="h1" className={classes.blockyText}>
-          Stay inside.
-          <br />
-          Game with us.
+      <Container maxWidth="lg" className={classes.main}>
+        <div className={classes.sloganContainer}>
+          <Typography variant="h1" className={classes.blockyText}>
+            We play
+            <br />
+            together
+          </Typography>
+          <Typography variant="h6">
+            Kappa Gamma Gamma is a community of gamers.
+          </Typography>
+        </div>
+        <Typography variant="h1" component="div"className={classes.blockyText}>
+          <MascotSVG className={classes.mascot} />
         </Typography>
       </Container>
-
-      <CouchSVG className={classes.splashCouch} />
       <WaveBlock>
         <Container
           maxWidth="lg"
@@ -149,7 +166,7 @@ const IndexPage = props => {
         maxWidth="lg"
         className={clsx(classes.block, classes.blockOdd)}
       >
-        <img src={joshZoom} className={classes.blockGraphic} />
+        <img src={joshLike} className={classes.blockGraphic} />
         <div className={classes.spacing}></div>
         <div className={classes.blockText}>
           <Typography variant="h3" className={classes.infoTitle}>
