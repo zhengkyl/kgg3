@@ -3,7 +3,7 @@ import { graphql, Link } from "gatsby"
 import Img from "gatsby-image"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-
+import ContactSVG from "../assets/svgs/contact.svg"
 import SEO from "../components/seo"
 
 import { Container, Grid, IconButton, Typography } from "@material-ui/core"
@@ -25,12 +25,28 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.primary.main,
     marginTop: theme.spacing(4),
   },
+  faqSection: {
+    [theme.breakpoints.up("md")]: {
+      display: "flex",
+      flexDirection: "row-reverse",
+    },
+    // textAlign:"center",
+  },
+  faqGraphic:{
+    maxWidth:600,
+    display:"block",
+    margin:"auto",
+    flex:1,
+  },
+  faqText:{
+    flex:1,
+  }
 }))
 
 const ContactPage = props => {
   const classes = useStyles()
 
-  const FaqBlock = ({question, answer}) => (
+  const FaqBlock = ({ question, answer }) => (
     <>
       <Typography variant="h3" className={classes.question}>
         {question}
@@ -56,15 +72,18 @@ const ContactPage = props => {
         <Typography variant="h1" className={classes.blockyText}>
           FAQ
         </Typography>
-        {FAQData.content.map((item, index) => (
-          <FaqBlock question={item.question} answer={item.answer} />
-          // createFaqBlock(item.question, item.answer
-        ))}
+        <div className={classes.faqSection}>
+          <ContactSVG className={classes.faqGraphic}/>
+          <div className={classes.faqText}>
+            {FAQData.content.map((item, index) => (
+              <FaqBlock question={item.question} answer={item.answer} />
+              // createFaqBlock(item.question, item.answer
+            ))}
+          </div>
+        </div>
       </Container>
     </>
   )
 }
-{
-  /* <span>Photo by <a href="https://unsplash.com/@charlesdeluvio?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Charles Deluvio</a> on <a href="https://unsplash.com/s/photos/cactus?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span> */
-}
+
 export default ContactPage

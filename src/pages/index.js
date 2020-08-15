@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faInstagram, faTwitter } from "@fortawesome/free-brands-svg-icons"
 
 import SEO from "../components/seo"
-import { Button, Container, Typography, TextField } from "@material-ui/core"
+import { Button, Container, Typography, TextField, Hidden } from "@material-ui/core"
 
 import WaveBlock from "../components/waveBlock"
 
@@ -24,12 +24,9 @@ import "../components/pageclip.css"
 import { makeStyles } from "@material-ui/core/styles"
 const useStyles = makeStyles(theme => ({
   main: {
-    display: "flex",
     minHeight: `80vh`,
-    flexDirection: "column",
-    justifyContent: "space-between",
     [theme.breakpoints.up("md")]: {
-      flexDirection: "row",
+      display: "flex",
     },
   },
   sloganContainer: {
@@ -64,6 +61,7 @@ const useStyles = makeStyles(theme => ({
   blockCenter: {
     flexDirection: "column",
     textAlign: "center",
+    // position:"relative",
   },
   block: {
     display: "flex",
@@ -99,6 +97,7 @@ const useStyles = makeStyles(theme => ({
   socialBlock: {
     display: "flex",
     alignItems: "center",
+    position:"relative",
   },
   socialLinks: {
     marginLeft: theme.spacing(4),
@@ -110,7 +109,11 @@ const useStyles = makeStyles(theme => ({
   emailField: {
     flex: 1,
   },
-  submitButton: {},
+  chicken: {
+    filter: "grayscale(1)",
+    position: "absolute",
+    // transform: "translate(50%,0)",
+  },
 }))
 
 const IndexPage = props => {
@@ -138,7 +141,7 @@ const IndexPage = props => {
             Kappa Gamma Gamma is a community of gamers.
           </Typography>
         </div>
-        <Typography variant="h1" component="div"className={classes.blockyText}>
+        <Typography variant="h1" component="div" className={classes.blockyText}>
           <MascotSVG className={classes.mascot} />
         </Typography>
       </Container>
@@ -223,7 +226,7 @@ const IndexPage = props => {
             id="emailTextField"
           />
           <Button
-            className={clsx("pageclip-form__submit", classes.submitButton)}
+            className={"pageclip-form__submit"}
             variant="outlined"
             color="primary"
             type="submit"
@@ -237,6 +240,13 @@ const IndexPage = props => {
           {"Follow our socials for more KGG <3"}
         </Typography>
         <div className={classes.socialBlock}>
+        <Hidden xsDown>
+             <Img
+            fixed={props.data.chickenWalk.childImageSharp.fixed}
+            className={classes.chicken}
+            style={{position:"absolute", left:"-80%"}}
+            />
+          </Hidden>
           <Typography variant="h2" component="span">
             {"@kagaga"}
           </Typography>
@@ -255,7 +265,15 @@ const IndexPage = props => {
           >
             <FontAwesomeIcon icon={faTwitter} size="3x" />
           </a>
-        </div>
+          <Hidden xsDown>
+             <Img
+            fixed={props.data.chickenFollow.childImageSharp.fixed}
+            className={classes.chicken}
+            style={{position:"absolute", right:"-80%"}}
+            />
+          </Hidden>
+       
+            </div>
       </Container>
     </>
   )
@@ -263,10 +281,17 @@ const IndexPage = props => {
 
 export const pageQuery = graphql`
   query {
-    space: file(relativePath: { eq: "space.jpg" }) {
+    chickenWalk: file(relativePath: { eq: "chicken_walk.png" }) {
       childImageSharp {
-        fluid(maxWidth: 2000) {
-          ...GatsbyImageSharpFluid
+        fixed(width: 160) {
+          ...GatsbyImageSharpFixed_noBase64
+        }
+      }
+    }
+    chickenFollow: file(relativePath: { eq: "chicken_follow.png" }) {
+      childImageSharp {
+        fixed(width: 160) {
+          ...GatsbyImageSharpFixed_noBase64
         }
       }
     }

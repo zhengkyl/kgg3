@@ -6,12 +6,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons"
 import { faWindowMaximize } from "@fortawesome/free-solid-svg-icons"
 
+import ThinkSVG from "../assets/svgs/think.svg"
 import SEO from "../components/seo"
 import clsx from "clsx"
 import { Container, Typography } from "@material-ui/core"
 
 import { makeStyles } from "@material-ui/core/styles"
-import Layout from "../components/layout"
 const useStyles = makeStyles(theme => ({
   gridContainer: {
     display: "flex",
@@ -52,6 +52,17 @@ const useStyles = makeStyles(theme => ({
   centerText: {
     textAlign: "center",
     marginTop: theme.spacing(2),
+  },
+  chicken:{
+    filter:"grayscale(1)",
+    float:"right",
+    marginLeft:theme.spacing(1),
+    marginTop:theme.spacing(1),
+  },
+  joinBlock:{
+    [theme.breakpoints.up("sm")]:{
+      display:"flex",
+    }
   },
 }))
 
@@ -121,10 +132,13 @@ const MembersPage = props => {
         <Typography variant="h3" className={classes.sectionTitle}>
           Looking to join?
         </Typography>
-        <Typography variant="h6">
-          KGG is always looking for more talented and talentless individuals.
-          More info about Fall 2020 recruitment coming soon!
-        </Typography>
+        <div className={classes.joinBlock}>
+          <Typography variant="h6" style={{flex:1}}>
+            KGG is always looking for more talented and talentless individuals.
+            More info about Fall 2020 recruitment coming soon!
+          </Typography>
+          <Img fixed={props.data.chickenDuo.childImageSharp.fixed} className={classes.chicken}/>
+        </div>
       </Container>
     </>
   )
@@ -146,10 +160,10 @@ export const pageQuery = graphql`
         }
       }
     }
-    cactus: file(relativePath: { eq: "cactus.jpg" }) {
+    chickenDuo: file(relativePath: { eq: "chicken_duo.png" }) {
       childImageSharp {
-        fluid(maxWidth: 300) {
-          ...GatsbyImageSharpFluid_noBase64
+        fixed(width: 200) {
+          ...GatsbyImageSharpFixed_noBase64
         }
       }
     }

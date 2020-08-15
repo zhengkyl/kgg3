@@ -33,7 +33,7 @@ const Layout = ({ children }) => {
         </Helmet>
         <CssBaseline />
         {/* This is needed for the footer to always be at the bottom of the page, regardless of page size */}
-        <div style={{display:"flex",flexDirection:"column", minHeight:"100vh"}}>
+        <div style={{display:"flex",flexDirection:"column", minHeight:"100vh", overflow:"hidden"}}>
           <Navbar />
           <main>{children}</main>
           <Footer />

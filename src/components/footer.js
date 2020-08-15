@@ -75,16 +75,26 @@ const Footer = () => {
                 People vector - freepik @ www.freepik.com
               </a>
             </Typography>
+            <Typography variant="caption">
+              <a href="https://www.freepik.com/free-vector/woman-addicted-social-media_6402798.htm">
+                Girl vector - freepik @ www.freepik.com
+              </a>
+            </Typography>
 
             <Typography variant="caption">
               <a href="https://www.freepik.com/free-vector/business-woman-with-coffee-posting-photo-internet_5481388.htm">
-                Business vector - pikisuperstar @ www.freepik.com
+                Social media vector - pikisuperstar @ www.freepik.com
+              </a>
+            </Typography>
+            <Typography variant="caption">
+              <a href="https://www.freepik.com/free-vector/error-404-concept-landing-page_5060706.htm">
+                FAQ vector - pikisuperstar @ www.freepik.com
               </a>
             </Typography>
           </div>
           <div className={classes.bottomText}>
             <Typography variant="caption">
-              {`© KGG ${new Date().getFullYear()}, Built with <3 by `}
+              {`© KGG ${new Date().getFullYear()}, Made with <3 by `}
               <a href="https://www.kylezheng.tech" target="_blank">
                 @zhengkyl
               </a>

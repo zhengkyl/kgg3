@@ -39,9 +39,10 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "#1a1a1a",
     borderRadius: theme.spacing(2),
     overflow: "hidden",
-    marginLeft:theme.spacing(2),
-    marginRight:theme.spacing(2),
+    marginLeft: theme.spacing(2),
+    marginRight: theme.spacing(2),
     width: 240,
+    height: 408,
   },
   programText: {
     padding: theme.spacing(2),
@@ -49,27 +50,34 @@ const useStyles = makeStyles(theme => ({
   container: {
     overflow: "hidden",
   },
-  carousel:{
-    display:'flex',
-    justifyContent:'center',
-    alignItems:'center',
+  carousel: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2),
   },
-  button:{
-    zIndex:1000,
+  button: {
+    zIndex: 1000,
     backgroundColor: "transparent",
-    width:32,
-    height:32,
-    border:"none",
-    color: "#fff",
-    borderRadius:"50%",
-    transform:'translate(-50%,0)',
-    "&:first-child":{
-      transform:'translate(50%,0)',
+    width: 32,
+    height: 32,
+    border: "none",
+    color: theme.palette.action.active,
+    borderRadius: "50%",
+    transform: "translate(-50%,0)",
+    "&:first-child": {
+      transform: "translate(50%,0)",
     },
-    "&:hover":{
-      backgroundColor:"#ffffff20"
-    }
-  }
+    "&:hover": {
+      backgroundColor: theme.palette.action.hover,
+    },
+    "&:disabled": {
+      color: theme.palette.action.disabled,
+      backgroundColor: "transparent",
+      cursor: "default",
+    },
+  },
 }))
 
 const ProgramsPage = props => {
@@ -84,9 +92,9 @@ const ProgramsPage = props => {
 
   const totalCards = ProgramsData.content.length
 
-  const ProgramBlock = ({ title, desc, children }) => (
+  const ProgramBlock = ({ title, desc, children, style }) => (
     <>
-      <div className={classes.programBlock}>
+      <div className={classes.programBlock} style={style}>
         <div className={classes.programText}>
           <Typography variant="h5" className={classes.sectionTitle}>
             {title}
@@ -106,21 +114,26 @@ const ProgramsPage = props => {
           Programs
         </Typography>
         <Typography variant="h4">
-          KGG is proud to run the following events
+          We host a variety of activites and events.
         </Typography>
         <CarouselProvider
           isIntrinsicHeight
           currentSlide={totalCards}
           visibleSlides={visibleCards}
           totalSlides={totalCards * 3}
-          //width of cards + width of card margins
           className={classes.carousel}
         >
           <ButtonBack className={classes.button}>
-            <FontAwesomeIcon icon={faCaretLeft} size="2x"/>
+            <FontAwesomeIcon icon={faCaretLeft} size="2x" />
           </ButtonBack>
-          
-          <Slider style={{ width: visibleCards * 240 + visibleCards * 32, overflow:'visible'}}>
+
+          <Slider
+            //width of cards + width of card margins
+            style={{
+              width: visibleCards * 240 + visibleCards * 32,
+              overflow: "visible",
+            }}
+          >
             {[0, 1, 2].map(iteration =>
               ProgramsData.content.map((item, index) => (
                 <Slide index={index + iteration * totalCards}>
@@ -133,9 +146,17 @@ const ProgramsPage = props => {
                 </Slide>
               ))
             )}
+            <Slide index={totalCards * 3}>
+              <ProgramBlock title={"(ㆆ_ㆆ)"} desc={"You reached the end..."} style={{position:"relative"}}>
+                <Img
+                  fixed={props.data.chickenPeck.childImageSharp.fixed}
+                  style={{filter:"grayscale(1)", position:"absolute", bottom:"32px", right:"32px"}}
+                />
+              </ProgramBlock>
+            </Slide>
           </Slider>
           <ButtonNext className={classes.button}>
-            <FontAwesomeIcon icon={faCaretRight} size="2x"/>
+            <FontAwesomeIcon icon={faCaretRight} size="2x" />
           </ButtonNext>
         </CarouselProvider>
       </Container>
@@ -198,6 +219,13 @@ export const pageQuery = graphql`
       childImageSharp {
         fluid(maxWidth: 300) {
           ...GatsbyImageSharpFluid_noBase64
+        }
+      }
+    }
+    chickenPeck: file(relativePath: { eq: "chicken_peck.png" }) {
+      childImageSharp {
+        fixed(width: 160) {
+          ...GatsbyImageSharpFixed_noBase64
         }
       }
     }
