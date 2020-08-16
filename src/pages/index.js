@@ -6,7 +6,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faInstagram, faTwitter } from "@fortawesome/free-brands-svg-icons"
 
 import SEO from "../components/seo"
-import { Button, Container, Typography, TextField, Hidden } from "@material-ui/core"
+import {
+  Button,
+  Container,
+  Typography,
+  TextField,
+  Hidden,
+} from "@material-ui/core"
 
 import WaveBlock from "../components/waveBlock"
 
@@ -25,18 +31,22 @@ import { makeStyles } from "@material-ui/core/styles"
 const useStyles = makeStyles(theme => ({
   main: {
     minHeight: `80vh`,
-    [theme.breakpoints.up("md")]: {
-      display: "flex",
-    },
+    display: "flex",
+    flexWrap: "wrap",
+    // [theme.breakpoints.up("md")]: {
+    // },
   },
   sloganContainer: {
     "& del": {
       color: theme.palette.primary.main,
     },
+    flex: 1,
   },
   mascot: {
-    maxWidth: 800,
-    // marginTop: 80,
+    maxWidth: 700,
+    minWidth: 350,
+    marginTop: 40,
+    flex: 1,
   },
   infoTitle: {
     fontWeight: 700,
@@ -97,7 +107,7 @@ const useStyles = makeStyles(theme => ({
   socialBlock: {
     display: "flex",
     alignItems: "center",
-    position:"relative",
+    position: "relative",
   },
   socialLinks: {
     marginLeft: theme.spacing(4),
@@ -133,17 +143,15 @@ const IndexPage = props => {
       <Container maxWidth="lg" className={classes.main}>
         <div className={classes.sloganContainer}>
           <Typography variant="h1" className={classes.blockyText}>
-            We play
-            <br />
-            together
+              Here's to time well wasted.
           </Typography>
           <Typography variant="h6">
             Kappa Gamma Gamma is a community of gamers.
           </Typography>
         </div>
-        <Typography variant="h1" component="div" className={classes.blockyText}>
-          <MascotSVG className={classes.mascot} />
-        </Typography>
+        {/* <Typography variant="h1" component="div" className={classes.blockyText}> */}
+        <MascotSVG className={classes.mascot} />
+        {/* </Typography> */}
       </Container>
       <WaveBlock>
         <Container
@@ -240,11 +248,11 @@ const IndexPage = props => {
           {"Follow our socials for more KGG <3"}
         </Typography>
         <div className={classes.socialBlock}>
-        <Hidden xsDown>
-             <Img
-            fixed={props.data.chickenWalk.childImageSharp.fixed}
-            className={classes.chicken}
-            style={{position:"absolute", left:"-80%"}}
+          <Hidden xsDown>
+            <Img
+              fixed={props.data.chickenWalk.childImageSharp.fixed}
+              className={classes.chicken}
+              style={{ position: "absolute", left: "-80%" }}
             />
           </Hidden>
           <Typography variant="h2" component="span">
@@ -266,14 +274,13 @@ const IndexPage = props => {
             <FontAwesomeIcon icon={faTwitter} size="3x" />
           </a>
           <Hidden xsDown>
-             <Img
-            fixed={props.data.chickenFollow.childImageSharp.fixed}
-            className={classes.chicken}
-            style={{position:"absolute", right:"-80%"}}
+            <Img
+              fixed={props.data.chickenFollow.childImageSharp.fixed}
+              className={classes.chicken}
+              style={{ position: "absolute", right: "-80%" }}
             />
           </Hidden>
-       
-            </div>
+        </div>
       </Container>
     </>
   )

@@ -2,7 +2,7 @@ import React, { useState } from "react"
 
 import clsx from "clsx"
 // import WaveSVG from "../assets/svgs/wave.svg"
-import WaveSVG from "../assets/svgs/wave.min.svg"
+import WaveSVG from "../assets/svgs/min/wave.min.svg"
 import { makeStyles } from "@material-ui/core/styles"
 const useStyles = makeStyles(theme => ({
   waveBlockContainer: {
