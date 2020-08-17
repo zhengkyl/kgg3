@@ -9,17 +9,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faInstagram, faTwitter } from "@fortawesome/free-brands-svg-icons"
 const useStyles = makeStyles(theme => ({
   footer: {
+    width:'100%',
     display: "flex",
     flexDirection: "column",
-    flex: 1,
     "& a": {
       color: theme.palette.text.primary,
       textDecoration: "none",
-      // fontFamily: theme.typography.fontFamilyMono,
     },
     "& a:hover": {
       color: theme.palette.primary.light,
-      // textDecoration:"none",
     },
   },
   footerContent: {

@@ -40,18 +40,19 @@ const useStyles = makeStyles(theme => ({
     "& del": {
       color: theme.palette.primary.main,
     },
+    minWidth:320,
     flex: 1,
   },
   mascot: {
-    maxWidth: 700,
-    minWidth: 350,
+    maxWidth: 600,
+    minWidth:400,
     marginTop: 40,
     flex: 1,
   },
   infoTitle: {
     fontWeight: 700,
     color: "#FFE680",
-    marginBottom: theme.spacing(4),
+    marginBottom: '0.8rem',
   },
   info: {
     fontWeight: 500,
@@ -61,6 +62,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up("md")]: {
       flexDirection: "row-reverse",
     },
+    backgroundColor:theme.palette.background.default,
   },
   blockEven: {
     flexDirection: "column",
@@ -71,19 +73,21 @@ const useStyles = makeStyles(theme => ({
   blockCenter: {
     flexDirection: "column",
     textAlign: "center",
-    // position:"relative",
+    alignItems: "center",
+    backgroundColor:theme.palette.background.default,
   },
   block: {
     display: "flex",
-    alignItems: "center",
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(8),
+    
   },
   blockText: {
     flex: 1,
+    margin: 'auto 0'
   },
   blockGraphic: {
-    flex: 2,
+    flex: 1.5,
     maxWidth: "100%",
   },
   blockyText: {
@@ -122,8 +126,14 @@ const useStyles = makeStyles(theme => ({
   chicken: {
     filter: "grayscale(1)",
     position: "absolute",
-    // transform: "translate(50%,0)",
   },
+  backgroundCover:{
+    backgroundColor:theme.palette.background.default,
+  },
+  footerCover:{
+    paddingBottom:96,
+    marginBottom:-64,
+  }
 }))
 
 const IndexPage = props => {
@@ -140,6 +150,7 @@ const IndexPage = props => {
           charset="utf-8"
         ></script>
       </Helmet>
+      {/* <div className={classes.backgroundCover}> */}
       <Container maxWidth="lg" className={classes.main}>
         <div className={classes.sloganContainer}>
           <Typography variant="h1" className={classes.blockyText}>
@@ -153,7 +164,8 @@ const IndexPage = props => {
         <MascotSVG className={classes.mascot} />
         {/* </Typography> */}
       </Container>
-      <WaveBlock>
+      
+      <WaveBlock bottomBackgroundColor={'#262626'}>
         <Container
           maxWidth="lg"
           className={clsx(classes.block, classes.blockEven)}
@@ -162,12 +174,10 @@ const IndexPage = props => {
           <div className={classes.spacing}></div>
           <div className={classes.blockText}>
             <Typography variant="h3" className={classes.infoTitle}>
-              For everyone and anyone
+              For pretty much everyone and anyone
             </Typography>
             <Typography variant="h6" className={classes.info}>
-              No matter what game you play, KGG welcomes you. We've always
-              strived for inclusiveness at KGG, because we know that games bring
-              people together.
+              We don't gatekeep or keep gates. Most of us play games, but we're all here to have fun.
             </Typography>
           </div>
         </Container>
@@ -190,27 +200,26 @@ const IndexPage = props => {
         </div>
       </Container>
 
-      <WaveBlock>
+      <WaveBlock topBackgroundColor={'#262626'} bottomBackgroundColor={'#262626'}>
         <Container
           maxWidth="lg"
           className={clsx(classes.block, classes.blockEven)}
         >
-          <DiversitySVG className={classes.blockGraphic} />
+          <CouchSVG className={classes.blockGraphic} />
           <div className={classes.spacing}></div>
           <div className={classes.blockText}>
             <Typography variant="h3" className={classes.infoTitle}>
-              Make memories that last beyond college.
+              Keep socializing while you distance
             </Typography>
             <Typography variant="h6" className={classes.info}>
-              You might not remember the hours you spend grinding, but you'll
-              never forget the fun you've had here. That's a promise.
+              Have fun without risking death. None of our activities require your physical presence.
             </Typography>
           </div>
         </Container>
       </WaveBlock>
       <Container
         maxWidth="lg"
-        className={clsx(classes.block, classes.blockCenter)}
+        className={clsx(classes.block, classes.blockCenter, classes.footerCover)}
       >
         <Typography variant="h3" className={classes.infoTitle}>
           Interested in KGG?
@@ -282,6 +291,7 @@ const IndexPage = props => {
           </Hidden>
         </div>
       </Container>
+      {/* </div> */}
     </>
   )
 }

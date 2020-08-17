@@ -1,12 +1,10 @@
-import React, { useState } from "react"
-import { graphql, Link } from "gatsby"
+import React from "react"
+import { graphql} from "gatsby"
 import Img from "gatsby-image"
-import clsx from "clsx"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCaretLeft } from "@fortawesome/free-solid-svg-icons"
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons"
-// import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-// import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+
 import {
   CarouselProvider,
   Slider,
@@ -15,12 +13,11 @@ import {
   ButtonNext,
 } from "pure-react-carousel"
 import "pure-react-carousel/dist/react-carousel.es.css"
-import { WithStore } from "pure-react-carousel"
 
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 import SEO from "../components/seo"
 
-import { Container, Grid, IconButton, Typography } from "@material-ui/core"
+import { Container,Typography } from "@material-ui/core"
 
 import { makeStyles } from "@material-ui/core/styles"
 import ProgramsData from "../../content/programs.yml"
@@ -32,9 +29,6 @@ const useStyles = makeStyles(theme => ({
   sectionTitle: {
     color: theme.palette.primary.main,
   },
-  blockImg: {
-    width: 240,
-  },
   programBlock: {
     backgroundColor: "#1a1a1a",
     borderRadius: theme.spacing(2),
@@ -42,7 +36,6 @@ const useStyles = makeStyles(theme => ({
     marginLeft: theme.spacing(2),
     marginRight: theme.spacing(2),
     width: 240,
-    height: 408,
   },
   programText: {
     padding: theme.spacing(2),
@@ -139,8 +132,8 @@ const ProgramsPage = props => {
                 <Slide index={index + iteration * totalCards}>
                   <ProgramBlock title={item.title} desc={item.desc}>
                     <Img
-                      fluid={props.data[item.imgName].childImageSharp.fluid}
-                      className={classes.blockImg}
+                      fixed={props.data[item.imgName].childImageSharp.fixed}
+                      style={{display:"block"}}
                     />
                   </ProgramBlock>
                 </Slide>
@@ -150,7 +143,7 @@ const ProgramsPage = props => {
               <ProgramBlock title={"(ㆆ_ㆆ)"} desc={"You reached the end..."} style={{position:"relative"}}>
                 <Img
                   fixed={props.data.chickenPeck.childImageSharp.fixed}
-                  style={{filter:"grayscale(1)", position:"absolute", bottom:"32px", right:"32px"}}
+                  style={{display:"block", filter:"grayscale(1)", margin: '147px auto 32px'}}
                 />
               </ProgramBlock>
             </Slide>
@@ -168,57 +161,57 @@ export const pageQuery = graphql`
   query {
     ramenNight: file(relativePath: { eq: "ramen_night43.png" }) {
       childImageSharp {
-        fluid(maxWidth: 300) {
-          ...GatsbyImageSharpFluid_noBase64
+        fixed(width: 240) {
+          ...GatsbyImageSharpFixed_noBase64
         }
       }
     }
     mentorship: file(relativePath: { eq: "mentorship43.png" }) {
       childImageSharp {
-        fluid(maxWidth: 300) {
-          ...GatsbyImageSharpFluid_noBase64
+        fixed(width: 240) {
+          ...GatsbyImageSharpFixed_noBase64
         }
       }
     }
     advice: file(relativePath: { eq: "advice43.png" }) {
       childImageSharp {
-        fluid(maxWidth: 300) {
-          ...GatsbyImageSharpFluid_noBase64
+        fixed(width: 240) {
+          ...GatsbyImageSharpFixed_noBase64
         }
       }
     }
     legal: file(relativePath: { eq: "legal43.png" }) {
       childImageSharp {
-        fluid(maxWidth: 300) {
-          ...GatsbyImageSharpFluid_noBase64
+        fixed(width: 240) {
+          ...GatsbyImageSharpFixed_noBase64
         }
       }
     }
     tutor: file(relativePath: { eq: "tutor43.png" }) {
       childImageSharp {
-        fluid(maxWidth: 300) {
-          ...GatsbyImageSharpFluid_noBase64
+        fixed(width: 240) {
+          ...GatsbyImageSharpFixed_noBase64
         }
       }
     }
     duo: file(relativePath: { eq: "duo43.png" }) {
       childImageSharp {
-        fluid(maxWidth: 300) {
-          ...GatsbyImageSharpFluid_noBase64
+        fixed(width: 240) {
+          ...GatsbyImageSharpFixed_noBase64
         }
       }
     }
     slide: file(relativePath: { eq: "slide43.png" }) {
       childImageSharp {
-        fluid(maxWidth: 300) {
-          ...GatsbyImageSharpFluid_noBase64
+        fixed(width: 240) {
+          ...GatsbyImageSharpFixed_noBase64
         }
       }
     }
     study: file(relativePath: { eq: "study43.png" }) {
       childImageSharp {
-        fluid(maxWidth: 300) {
-          ...GatsbyImageSharpFluid_noBase64
+        fixed(width: 240) {
+          ...GatsbyImageSharpFixed_noBase64
         }
       }
     }

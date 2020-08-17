@@ -16,7 +16,7 @@ import Footer from "./footer"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import { ThemeProvider, Container } from "@material-ui/core"
 import theme from "./theme"
-
+import backTile from "../assets/images/background_tile.png"
 const Layout = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
@@ -32,9 +32,10 @@ const Layout = ({ children }) => {
           />
         </Helmet>
         <CssBaseline />
-        {/* This is needed for the footer to always be at the bottom of the page, regardless of page size */}
-        <div style={{display:"flex",flexDirection:"column", minHeight:"100vh", overflow:"hidden"}}>
+        {/* This was used for the footer to always be at the bottom of the page, regardless of page size */}
+        <div style={{ backgroundImage:`url(${backTile})`, minHeight:"100vh"}}>
           <Navbar />
+          {/* 100vh effectively does same as above without requiring a another dom element */}
           <main>{children}</main>
           <Footer />
         </div>
