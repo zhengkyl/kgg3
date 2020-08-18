@@ -143,7 +143,6 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const IndexPage = props => {
-  console.log(props)
   const classes = useStyles()
 
   return (
@@ -244,7 +243,7 @@ const IndexPage = props => {
           </Typography>
 
           <form
-            action={`https://send.pageclip.co/${process.env.PAGECLIP_API_KEY}`}
+            action={`https://send.pageclip.co/KRNEb4w6raeBeRXO3qRLKm9GVEK1H8IX`}
             className={clsx("pageclip-form", classes.form)}
             method="post"
           >
