@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faInstagram, faTwitter } from "@fortawesome/free-brands-svg-icons"
 const useStyles = makeStyles(theme => ({
   footer: {
-    width:'100%',
+    width: "100%",
     display: "flex",
     flexDirection: "column",
     "& a": {
@@ -32,7 +32,8 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.text.primary,
     "& span": {
       display: "inline-block",
-      marginRight: theme.spacing(3),
+      marginRight: theme.spacing(1),
+      marginLeft: theme.spacing(1),
     },
     "& span:last-child": {
       marginRight: 0,
@@ -67,15 +68,20 @@ const Footer = () => {
             <Typography variant="subtitle2" className={classes.sectionTitle}>
               Attributions
             </Typography>
-
-            <Typography variant="caption">
-              <a href="https://www.freepik.com/free-vector/people-jumping-youth-day-design_8648097.htm">
-                People vector - freepik @ www.freepik.com
-              </a>
-            </Typography>
             <Typography variant="caption">
               <a href="https://www.freepik.com/free-vector/woman-addicted-social-media_6402798.htm">
                 Girl vector - freepik @ www.freepik.com
+              </a>
+            </Typography>
+            <Typography variant="caption">
+              <a href="https://www.freepik.com/free-vector/flat-design-young-people-listening-music_5599551.htm">
+                Heads vector - freepik @ www.freepik.com
+              </a>
+            </Typography>
+
+            <Typography variant="caption">
+              <a href="https://www.freepik.com/free-vector/people-jumping-youth-day-design_8648097.htm">
+                Jumping people vector - freepik @ www.freepik.com
               </a>
             </Typography>
 
@@ -84,6 +90,13 @@ const Footer = () => {
                 Social media vector - pikisuperstar @ www.freepik.com
               </a>
             </Typography>
+
+            <Typography variant="caption">
+              <a href="https://www.freepik.com/free-vector/character-playing-videogame_7903623.htm">
+                Couch gamers vector - freepik @ www.freepik.com
+              </a>
+            </Typography>
+
             <Typography variant="caption">
               <a href="https://www.freepik.com/free-vector/error-404-concept-landing-page_5060706.htm">
                 FAQ vector - pikisuperstar @ www.freepik.com
@@ -93,7 +106,7 @@ const Footer = () => {
           <div className={classes.bottomText}>
             <Typography variant="caption">
               {`© KGG ${new Date().getFullYear()}, Made with <3 by `}
-              <a href="https://www.kylezheng.tech" target="_blank">
+              <a href="https://www.kylezheng.dev" target="_blank">
                 @zhengkyl
               </a>
             </Typography>

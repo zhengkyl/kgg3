@@ -142,6 +142,7 @@ export default function Navbar() {
             to={page.path}
             className={classes.link}
             activeClassName={classes.activeLink}
+            partiallyActive={page.path!=="/"}
           >
             <Typography variant="subtitle2" className={classes.displayText}>
               {page.title}

@@ -1,5 +1,5 @@
-import React from "react"
-import { graphql} from "gatsby"
+import React, { useState } from "react"
+import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCaretLeft } from "@fortawesome/free-solid-svg-icons"
@@ -17,7 +17,7 @@ import "pure-react-carousel/dist/react-carousel.es.css"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 import SEO from "../components/seo"
 
-import { Container,Typography } from "@material-ui/core"
+import { Container, Typography } from "@material-ui/core"
 
 import { makeStyles } from "@material-ui/core/styles"
 import ProgramsData from "../../content/programs.yml"
@@ -90,7 +90,11 @@ const ProgramsPage = props => {
     <>
       <div className={classes.programBlock} style={style}>
         <div className={classes.programText}>
-          <Typography variant="h5" component="h3" className={classes.sectionTitle}>
+          <Typography
+            variant="h5"
+            component="h3"
+            className={classes.sectionTitle}
+          >
             {title}
           </Typography>
           <Typography variant="body1">{desc}</Typography>
@@ -99,6 +103,8 @@ const ProgramsPage = props => {
       </div>
     </>
   )
+
+  const [scrollLock, setScrollLock] = useState(false)
 
   return (
     <>
@@ -125,7 +131,12 @@ const ProgramsPage = props => {
             //width of cards + width of card margins
             style={{
               width: visibleCards * 240 + visibleCards * 32,
-              overflow: atLeastLg ? "hidden":"visible",
+              overflow: atLeastLg ? "hidden" : "visible",
+            }}
+            isPageScrollLocked={scrollLock}
+            trayProps={{
+              onTouchStart: () => setScrollLock(true),
+              onTouchEnd: () => setScrollLock(false),
             }}
           >
             {[0, 1, 2].map(iteration =>
@@ -134,17 +145,25 @@ const ProgramsPage = props => {
                   <ProgramBlock title={item.title} desc={item.desc}>
                     <Img
                       fixed={props.data[item.imgName].childImageSharp.fixed}
-                      style={{display:"block"}}
+                      style={{ display: "block" }}
                     />
                   </ProgramBlock>
                 </Slide>
               ))
             )}
             <Slide index={totalCards * 3}>
-              <ProgramBlock title={"(ㆆ_ㆆ)"} desc={"You reached the end..."} style={{position:"relative"}}>
+              <ProgramBlock
+                title={"(ㆆ_ㆆ)"}
+                desc={"You reached the end..."}
+                style={{ position: "relative" }}
+              >
                 <Img
                   fixed={props.data.chickenPeck.childImageSharp.fixed}
-                  style={{display:"block", filter:"grayscale(1)", margin: '147px auto 32px'}}
+                  style={{
+                    display: "block",
+                    filter: "grayscale(1)",
+                    margin: "147px auto 32px",
+                  }}
                 />
               </ProgramBlock>
             </Slide>
