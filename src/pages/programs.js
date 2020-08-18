@@ -54,11 +54,11 @@ const useStyles = makeStyles(theme => ({
   button: {
     zIndex: 1000,
     backgroundColor: "transparent",
-    width: 32,
-    height: 32,
+    width: 48,
+    height: 48,
     border: "none",
     color: theme.palette.action.active,
-    borderRadius: "50%",
+    borderRadius: "25%",
     transform: "translate(-50%,0)",
     "&:first-child": {
       transform: "translate(50%,0)",
@@ -124,7 +124,7 @@ const ProgramsPage = props => {
           className={classes.carousel}
         >
           <ButtonBack className={classes.button}>
-            <FontAwesomeIcon icon={faCaretLeft} size="2x" />
+            <FontAwesomeIcon icon={faCaretLeft} size="3x" />
           </ButtonBack>
 
           <Slider
@@ -169,7 +169,7 @@ const ProgramsPage = props => {
             </Slide>
           </Slider>
           <ButtonNext className={classes.button}>
-            <FontAwesomeIcon icon={faCaretRight} size="2x" />
+            <FontAwesomeIcon icon={faCaretRight} size="3x" />
           </ButtonNext>
         </CarouselProvider>
       </Container>

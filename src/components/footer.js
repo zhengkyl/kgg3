@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
 
 import WaveBlock from "./waveBlock"
 import { makeStyles } from "@material-ui/core/styles"
@@ -104,9 +103,9 @@ const Footer = () => {
             </Typography>
           </div>
           <div className={classes.bottomText}>
-            <Typography variant="caption">
+            <Typography variant="body2">
               {`© KGG ${new Date().getFullYear()}, Made with <3 by `}
-              <a href="https://www.kylezheng.dev" target="_blank">
+              <a href="https://www.kylezheng.dev" target="_blank" rel="noopener noreferrer">
                 @zhengkyl
               </a>
             </Typography>
@@ -115,6 +114,8 @@ const Footer = () => {
               className={classes.socialLinks}
               href="https://twitter.com/kappagaga"
               target="_blank"
+              rel="noopener noreferrer"
+              alt="Twitter"
             >
               <FontAwesomeIcon icon={faTwitter} size="lg" />
             </a>
@@ -122,6 +123,8 @@ const Footer = () => {
               className={classes.socialLinks}
               href="https://www.instagram.com/kappagaga/"
               target="_blank"
+              rel="noopener noreferrer"
+              alt="Instagram"
             >
               <FontAwesomeIcon icon={faInstagram} size="lg" />
             </a>

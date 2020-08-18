@@ -163,12 +163,13 @@ export default function Navbar() {
           className={classes.appBar}
         >
           <Toolbar className={classes.toolbar}>
-            <Link to="/" className={classes.logoLink}>
+            <Link to="/" className={classes.logoLink} alt="Home">
               <KggLogo className={classes.logo} />
             </Link>
 
             <Hidden smUp>
               <IconButton
+                name="Menu button"
                 onClick={toggleDrawer(!open)}
                 edge="end"
                 className={classes.menuButton}

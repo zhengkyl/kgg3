@@ -14,7 +14,7 @@ import Navbar from "./navbar"
 import Footer from "./footer"
 // import "./layout.css"
 import CssBaseline from "@material-ui/core/CssBaseline"
-import { ThemeProvider, Container } from "@material-ui/core"
+import { ThemeProvider } from "@material-ui/core"
 import theme from "./theme"
 import backTile from "../assets/background/tile.svg"
 const Layout = ({ children }) => {

@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import { graphql, Link } from "gatsby"
+import React from "react"
+import { graphql} from "gatsby"
 import Img from "gatsby-image"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -38,7 +38,7 @@ const useStyles = makeStyles(theme => ({
   },
   socialIcon: {
     margin: theme.spacing(0.5),
-    padding: theme.spacing(1),
+    padding: theme.spacing(2),
     color: theme.palette.text.primary,
     "&:hover": {
       color: theme.palette.primary.light,
@@ -103,6 +103,7 @@ const MembersPage = props => {
             <a
               href="https://www.kylezheng.dev"
               target="_blank"
+              rel="noopener noreferrer"
               className={classes.socialIcon}
             >
               <FontAwesomeIcon icon={faWindowMaximize} size="lg" />
@@ -110,6 +111,7 @@ const MembersPage = props => {
             <a
               href="https://github.com/zhengkyl"
               target="_blank"
+              rel="noopener noreferrer"
               className={classes.socialIcon}
             >
               <FontAwesomeIcon icon={faGithub} size="lg" />
@@ -117,6 +119,7 @@ const MembersPage = props => {
             <a
               href="https://www.linkedin.com/in/kyle-zheng-9b2546145/"
               target="_blank"
+              rel="noopener noreferrer"
               className={classes.socialIcon}
             >
               <FontAwesomeIcon icon={faLinkedin} size="lg" />
@@ -169,7 +172,4 @@ export const pageQuery = graphql`
     }
   }
 `
-{
-  /* <span>Photo by <a href="https://unsplash.com/@charlesdeluvio?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Charles Deluvio</a> on <a href="https://unsplash.com/s/photos/cactus?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span> */
-}
 export default MembersPage

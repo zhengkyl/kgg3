@@ -1,15 +1,12 @@
-import React, { useState } from "react"
-import { graphql, Link } from "gatsby"
-import Img from "gatsby-image"
+import React from "react"
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+
 import ContactSVG from "../assets/svgs/contact.svg"
 import SEO from "../components/seo"
 
-import { Container, Grid, IconButton, Typography } from "@material-ui/core"
+import { Container, Typography } from "@material-ui/core"
 
 import { makeStyles } from "@material-ui/core/styles"
-import Layout from "../components/layout"
 import FAQData from "../../content/faq.yml"
 const useStyles = makeStyles(theme => ({
   blockyText: {

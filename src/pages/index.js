@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import { Link, graphql } from "gatsby"
+import React from "react"
+import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import { Helmet } from "react-helmet"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -19,7 +19,6 @@ import WaveBlock from "../components/waveBlock"
 import CouchSVG from "../assets/svgs/couch.svg"
 import DiversitySVG from "../assets/svgs/everyone.svg"
 import MascotSVG from "../assets/svgs/mascot.svg"
-import WaveSVG from "../assets/svgs/wave.svg"
 
 // import joshZoom from "../assets/images/josh_zoom.gif"
 import joshLike from "../assets/images/social_lossy.webp"
@@ -82,12 +81,16 @@ const useStyles = makeStyles(theme => ({
     paddingBottom: theme.spacing(8),
   },
   blockText: {
-    flex: 1,
     margin: "auto 0",
+    [theme.breakpoints.up("md")]: {
+      flex: 1,
+    },
   },
   blockGraphic: {
-    flex: 1.5,
     maxWidth: "100%",
+    [theme.breakpoints.up("md")]: {
+      flex: 1.5,
+    },
   },
   blockyText: {
     marginTop: `0.8em`,
@@ -137,9 +140,9 @@ const useStyles = makeStyles(theme => ({
   notWaveBlock: {
     backgroundColor: theme.palette.background.default,
   },
-  first:{
-    paddingTop:theme.spacing(12),
-  }
+  first: {
+    paddingTop: theme.spacing(12),
+  },
 }))
 
 const IndexPage = props => {
@@ -191,7 +194,10 @@ const IndexPage = props => {
           maxWidth="lg"
           className={clsx(classes.block, classes.blockOdd)}
         >
-          <img src={joshLike} className={classes.blockGraphic} />
+          <div className={classes.blockGraphic}>
+            <img src={joshLike} style={{width:"100%"}} alt="Thumbs Up for Legal Activites"/>
+          </div>
+
           <div className={classes.spacing}></div>
           <div className={classes.blockText}>
             <Typography variant="h3" className={classes.infoTitle}>
@@ -286,6 +292,8 @@ const IndexPage = props => {
               className={classes.socialLinks}
               href="https://www.instagram.com/kappagaga/"
               target="_blank"
+              rel="noreferrer noopener"
+              alt="Instagram"
             >
               <FontAwesomeIcon icon={faInstagram} size="3x" />
             </a>
@@ -293,6 +301,8 @@ const IndexPage = props => {
               className={classes.socialLinks}
               href="https://twitter.com/kappagaga"
               target="_blank"
+              rel="noreferrer noopener"
+              alt="Twitter"
             >
               <FontAwesomeIcon icon={faTwitter} size="3x" />
             </a>
