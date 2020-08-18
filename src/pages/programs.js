@@ -24,6 +24,7 @@ import ProgramsData from "../../content/programs.yml"
 const useStyles = makeStyles(theme => ({
   blockyText: {
     marginTop: `0.8em`,
+    marginBottom: `0.2em`,
     textShadow: `-0.05em 0.04em ${theme.palette.primary.dark}`,
   },
   sectionTitle: {
@@ -47,8 +48,8 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    marginTop: theme.spacing(2),
-    marginBottom: theme.spacing(2),
+    marginTop: theme.spacing(4),
+    marginBottom: theme.spacing(4),
   },
   button: {
     zIndex: 1000,
@@ -89,7 +90,7 @@ const ProgramsPage = props => {
     <>
       <div className={classes.programBlock} style={style}>
         <div className={classes.programText}>
-          <Typography variant="h5" className={classes.sectionTitle}>
+          <Typography variant="h5" component="h3" className={classes.sectionTitle}>
             {title}
           </Typography>
           <Typography variant="body1">{desc}</Typography>
@@ -106,7 +107,7 @@ const ProgramsPage = props => {
         <Typography variant="h1" className={classes.blockyText}>
           Programs
         </Typography>
-        <Typography variant="h4">
+        <Typography variant="h4" component="h2">
           We host a variety of activites and events.
         </Typography>
         <CarouselProvider
@@ -124,7 +125,7 @@ const ProgramsPage = props => {
             //width of cards + width of card margins
             style={{
               width: visibleCards * 240 + visibleCards * 32,
-              overflow: "visible",
+              overflow: atLeastLg ? "hidden":"visible",
             }}
           >
             {[0, 1, 2].map(iteration =>

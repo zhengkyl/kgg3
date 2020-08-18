@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `KGG`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `KGG — The Community for Gamers`,
+    description: `A college community that plays games together sometimes, but also hangout without playing games sometimes too.`,
+    author: `@zhengkyl`,
   },
   plugins: [
     {

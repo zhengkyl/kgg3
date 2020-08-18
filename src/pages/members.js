@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons"
 import { faWindowMaximize } from "@fortawesome/free-solid-svg-icons"
 
-import ThinkSVG from "../assets/svgs/think.svg"
 import SEO from "../components/seo"
 import clsx from "clsx"
 import { Container, Typography } from "@material-ui/core"
@@ -72,8 +71,8 @@ const MembersPage = props => {
   const ProfileContainer = ({ fluidImage, name, desc, children }) => (
     <span className={classes.gridItem}>
       <Img fluid={fluidImage} className={classes.image} />
-      <Typography variant="h5">{name}</Typography>
-      <Typography variant="h6" className={classes.memberDesc}>
+      <Typography variant="h5" component="h3">{name}</Typography>
+      <Typography variant="h6" component="span" className={classes.memberDesc}>
         {desc}
       </Typography>
       <div>{children}</div>
@@ -89,6 +88,7 @@ const MembersPage = props => {
 
         <Typography
           variant="h3"
+          component="h2"
           className={clsx(classes.sectionTitle, classes.centerText)}
         >
           Ranked by Epicness
@@ -129,11 +129,11 @@ const MembersPage = props => {
             desc="did not make this website"
           />
         </div>
-        <Typography variant="h3" className={classes.sectionTitle}>
+        <Typography variant="h3" component="h2" className={classes.sectionTitle}>
           Looking to join?
         </Typography>
         <div className={classes.joinBlock}>
-          <Typography variant="h6" style={{flex:1}}>
+          <Typography variant="h6" component="p" style={{flex:1}}>
             KGG is always looking for more talented and talentless individuals.
             More info about Fall 2020 recruitment coming soon!
           </Typography>

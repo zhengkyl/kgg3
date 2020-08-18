@@ -14,6 +14,7 @@ import FAQData from "../../content/faq.yml"
 const useStyles = makeStyles(theme => ({
   blockyText: {
     marginTop: `0.8em`,
+    marginBottom: `0.2em`,
     // marginBottom: theme.spacing(1),
     textShadow: `-0.05em 0.04em ${theme.palette.primary.dark}`,
   },
@@ -48,10 +49,10 @@ const ContactPage = props => {
 
   const FaqBlock = ({ question, answer }) => (
     <>
-      <Typography variant="h3" className={classes.question}>
+      <Typography variant="h3" component="h2" className={classes.question}>
         {question}
       </Typography>
-      <Typography variant="h6">{answer}</Typography>
+      <Typography variant="h6" component="p">{answer}</Typography>
     </>
   )
   return (
@@ -61,11 +62,11 @@ const ContactPage = props => {
         <Typography variant="h1" className={classes.blockyText}>
           Contact
         </Typography>
-        <Typography variant="h4">Email us at </Typography>
+        <Typography variant="h4" component="p">Email us at </Typography>
         <Typography variant="h2" className={classes.email}>
           contact@kgg.gg
         </Typography>
-        <Typography variant="h4">Visit in person at </Typography>
+        <Typography variant="h4" component="p">Visit in person at </Typography>
         <Typography variant="h2" className={classes.email}>
           HCRN 3F Middle Lounge
         </Typography>
