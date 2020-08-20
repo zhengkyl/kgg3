@@ -33,10 +33,18 @@ const Layout = ({ children }) => {
         </Helmet>
         <CssBaseline />
         {/* This was used for the footer to always be at the bottom of the page, regardless of page size */}
-        <div style={{ backgroundImage:`url(${backTile})`, backgroundSize:400, minHeight:"100vh", overflow:"hidden"}}>
+        <div
+          style={{
+            backgroundImage: `url(${backTile})`,
+            backgroundSize: 400,
+            minHeight: "100vh",
+            display: "flex",
+            flexDirection: "column",
+            overflow: "hidden",
+          }}
+        >
           <Navbar />
-          {/* 100vh effectively does same as above without requiring a another dom element */}
-          <main>{children}</main>
+          <main style={{flexGrow:1}}>{children}</main>
           <Footer />
         </div>
       </React.Fragment>
