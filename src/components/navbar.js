@@ -15,7 +15,7 @@ import { Link } from "gatsby"
 import React, { useState } from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import MenuIcon from "./menuIcon"
-import KggLogo from "../assets/svgs/kgg_yellow.svg"
+import KggLogo from "../assets/svgs/min/logo.min.svg"
 const useStyles = makeStyles(theme => ({
   appBar: {
     zIndex: 1400,

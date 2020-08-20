@@ -1,7 +1,7 @@
 import React from "react"
 
 
-import ContactSVG from "../assets/svgs/contact.svg"
+import ContactSVG from "../assets/svgs/min/contact.min.svg"
 import SEO from "../components/seo"
 
 import { Container, Typography } from "@material-ui/core"

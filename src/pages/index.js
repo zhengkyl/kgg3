@@ -16,9 +16,9 @@ import {
 
 import WaveBlock from "../components/waveBlock"
 
-import CouchSVG from "../assets/svgs/couch.svg"
-import DiversitySVG from "../assets/svgs/everyone.svg"
-import MascotSVG from "../assets/svgs/mascot.svg"
+import CouchSVG from "../assets/svgs/min/couch.min.svg"
+import DiversitySVG from "../assets/svgs/min/everyone.min.svg"
+import MascotSVG from "../assets/svgs/min/mascot.min.svg"
 
 // import joshZoom from "../assets/images/josh_zoom.gif"
 import joshLike from "../assets/images/social_lossy.webp"
