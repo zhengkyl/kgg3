@@ -1,10 +1,9 @@
 import React from "react"
-import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import { Helmet } from "react-helmet"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faInstagram, faTwitter } from "@fortawesome/free-brands-svg-icons"
-
+import { useStaticQuery, graphql } from "gatsby"
 import SEO from "../components/seo"
 import {
   Button,
@@ -152,6 +151,7 @@ const IndexPage = props => {
     <>
       <SEO title="Home" />
       <Helmet>
+        <title>{props.data.site.siteMetadata.title}</title>
         <script
           defer
           src="https://s.pageclip.co/v1/pageclip.js"
@@ -334,6 +334,11 @@ export const pageQuery = graphql`
         fixed(width: 160) {
           ...GatsbyImageSharpFixed_noBase64
         }
+      }
+    }
+    site {
+      siteMetadata {
+        title
       }
     }
   }
