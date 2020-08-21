@@ -43,9 +43,12 @@ const useStyles = makeStyles(theme => ({
   },
   mascot: {
     maxWidth: 600,
-    minWidth: 400,
+    minWidth:'100%',
     marginTop: 40,
     flex: 1,
+    [theme.breakpoints.up("sm")]:{
+      minWidth: 400,
+    }
   },
   infoTitle: {
     fontWeight: 700,
