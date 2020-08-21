@@ -28,11 +28,8 @@ import "../components/pageclip.css"
 import { makeStyles } from "@material-ui/core/styles"
 const useStyles = makeStyles(theme => ({
   main: {
-    minHeight: `80vh`,
     display: "flex",
     flexWrap: "wrap",
-    // [theme.breakpoints.up("md")]: {
-    // },
   },
   sloganContainer: {
     "& b": {
@@ -45,6 +42,7 @@ const useStyles = makeStyles(theme => ({
     maxWidth: 600,
     minWidth:'100%',
     marginTop: 40,
+    marginBottom:40,
     flex: 1,
     [theme.breakpoints.up("sm")]:{
       minWidth: 400,
