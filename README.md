@@ -1,4 +1,4 @@
-# Website the KGG — The Community for Gamers
+# KGG — The Community for Gamers
 
 Kappa Gamma Gamma (KGG) is a college community that plays games together sometimes, but also hangout without playing games sometimes too.
 
