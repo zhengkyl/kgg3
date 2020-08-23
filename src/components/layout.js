@@ -17,6 +17,12 @@ import CssBaseline from "@material-ui/core/CssBaseline"
 import { ThemeProvider } from "@material-ui/core"
 import theme from "./theme"
 import backTile from "../assets/background/tile.svg"
+
+// This stops the flashing of font awesome icons by inlining the css
+import { config } from "@fortawesome/fontawesome-svg-core"
+import "@fortawesome/fontawesome-svg-core/styles.css"
+config.autoAddCss = false
+
 const Layout = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
