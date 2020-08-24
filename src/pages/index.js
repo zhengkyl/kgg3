@@ -21,6 +21,8 @@ import MascotSVG from "../assets/svgs/min/mascot.min.svg"
 
 // import joshZoom from "../assets/images/josh_zoom.gif"
 import joshLike from "../assets/images/social_lossy.webp"
+import joshLike400 from "../assets/images/social_lossy_400.webp"
+import joshLike700 from "../assets/images/social_lossy_700.webp"
 
 import clsx from "clsx"
 
@@ -150,9 +152,8 @@ const IndexPage = props => {
 
   return (
     <>
-      <SEO title="Home" />
+      <SEO/>
       <Helmet>
-        <title>{props.data.site.siteMetadata.title}</title>
         <script
           defer
           src="https://s.pageclip.co/v1/pageclip.js"
@@ -196,7 +197,10 @@ const IndexPage = props => {
           className={clsx(classes.block, classes.blockOdd)}
         >
           <div className={classes.blockGraphic}>
-            <img src={joshLike} style={{width:"100%"}} alt="Thumbs Up for Legal Activites"/>
+            <picture>
+              <source media="(min-width: 600px)" srcSet={joshLike700}/>
+              <img src={joshLike400} style={{width:"100%"}} alt="Thumbs Up for Legal Activites"/>
+            </picture>
           </div>
 
           <div className={classes.spacing}></div>
@@ -205,7 +209,7 @@ const IndexPage = props => {
               Participate in legal activities with new friends.
             </Typography>
             <Typography variant="h6" component="p" className={classes.info}>
-              All of our activities are legal under U.S. law in the state of
+              All of KGG's activities are legal under U.S. law in the state of
               Indiana.
             </Typography>
           </div>
@@ -227,7 +231,7 @@ const IndexPage = props => {
               Keep socializing while you distance
             </Typography>
             <Typography variant="h6" component="p" className={classes.info}>
-              Have fun without risking death. None of our activities require
+              Have fun without risking death. Nothing we do requires
               your physical presence.
             </Typography>
           </div>
