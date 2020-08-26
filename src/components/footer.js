@@ -105,7 +105,7 @@ const Footer = () => {
           <div className={classes.bottomText}>
             <Typography variant="body2">
               {`© KGG ${new Date().getFullYear()}, Made with <3 by `}
-              <a href="https://www.kylezheng.dev" target="_blank" rel="noopener noreferrer">
+              <a href="https://kylezheng.dev" target="_blank" rel="noopener noreferrer">
                 @zhengkyl
               </a>
             </Typography>

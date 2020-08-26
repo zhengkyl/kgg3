@@ -101,7 +101,7 @@ const MembersPage = props => {
             desc="made this website"
           >
             <a
-              href="https://www.kylezheng.dev"
+              href="https://kylezheng.dev"
               target="_blank"
               rel="noopener noreferrer"
               className={classes.socialIcon}
