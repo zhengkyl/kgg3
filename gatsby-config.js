@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `KGG — The Community for Gamers`,
-    description: `Kappa Gamma Gamma is a college community that plays games together sometimes, but also hangout without playing games sometimes too.`,
+    title: `KGG — The Fraternity for Gamers`,
+    description: `Kappa Gamma Gamma (KGG) is a coed college community that plays games together sometimes, but also hangout without playing games sometimes too.`,
     author: `@zhengkyl`,
   },
   plugins: [

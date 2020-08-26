@@ -3,7 +3,7 @@ import Img from "gatsby-image"
 import { Helmet } from "react-helmet"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faInstagram, faTwitter } from "@fortawesome/free-brands-svg-icons"
-import { useStaticQuery, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import SEO from "../components/seo"
 import {
   Button,
@@ -42,13 +42,13 @@ const useStyles = makeStyles(theme => ({
   },
   mascot: {
     maxWidth: 600,
-    minWidth:'100%',
+    minWidth: "100%",
     marginTop: 40,
-    marginBottom:40,
+    marginBottom: 40,
     flex: 1,
-    [theme.breakpoints.up("sm")]:{
+    [theme.breakpoints.up("sm")]: {
       minWidth: 400,
-    }
+    },
   },
   infoTitle: {
     fontWeight: 700,
@@ -152,7 +152,7 @@ const IndexPage = props => {
 
   return (
     <>
-      <SEO/>
+      <SEO />
       <Helmet>
         <script
           defer
@@ -184,8 +184,8 @@ const IndexPage = props => {
               For pretty much everyone and anyone
             </Typography>
             <Typography variant="h6" component="p" className={classes.info}>
-              No matter your gender, race, sexual preference (no pedophiles) or
-              even if you're a Yasuo main, KGG welcomes you.
+              No matter your gender, race, or sexual preference (no pedophiles),
+              KGG welcomes you. We're a family, but not the judgemental kind.
             </Typography>
           </div>
         </Container>
@@ -198,8 +198,12 @@ const IndexPage = props => {
         >
           <div className={classes.blockGraphic}>
             <picture>
-              <source media="(min-width: 600px)" srcSet={joshLike700}/>
-              <img src={joshLike400} style={{width:"100%"}} alt="Thumbs Up for Legal Activites"/>
+              <source media="(min-width: 600px)" srcSet={joshLike700} />
+              <img
+                src={joshLike400}
+                style={{ width: "100%" }}
+                alt="Thumbs Up for Legal Activites"
+              />
             </picture>
           </div>
 
@@ -231,8 +235,8 @@ const IndexPage = props => {
               Keep socializing while you distance
             </Typography>
             <Typography variant="h6" component="p" className={classes.info}>
-              Have fun without risking death. Nothing we do requires
-              your physical presence.
+              Have fun without risking death. Nothing we do in KGG requires your
+              physical presence.
             </Typography>
           </div>
         </Container>
