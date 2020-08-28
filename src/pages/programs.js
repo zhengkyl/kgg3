@@ -104,6 +104,25 @@ const ProgramsPage = props => {
     </>
   )
 
+  const EndSlide = ({index}) => (
+    <Slide index={index}>
+              <ProgramBlock
+                title={"(ㆆ_ㆆ)"}
+                desc={`You reached the ${index == 0 ? "beginning":"end"}...`}
+                style={{ position: "relative" }}
+              >
+                <Img
+                  fixed={props.data.chickenPeck.childImageSharp.fixed}
+                  style={{
+                    display: "block",
+                    filter: "grayscale(1)",
+                    margin: "147px auto 32px",
+                  }}
+                />
+              </ProgramBlock>
+            </Slide>
+  )
+
   const [scrollLock, setScrollLock] = useState(false)
 
   return (
@@ -118,9 +137,9 @@ const ProgramsPage = props => {
         </Typography>
         <CarouselProvider
           isIntrinsicHeight
-          currentSlide={totalCards}
+          currentSlide={2 * totalCards + 1}
           visibleSlides={visibleCards}
-          totalSlides={totalCards * 3}
+          totalSlides={totalCards * 4 + 2}
           className={classes.carousel}
         >
           <ButtonBack className={classes.button}>
@@ -139,9 +158,10 @@ const ProgramsPage = props => {
               onTouchEnd: () => setScrollLock(false),
             }}
           >
-            {[0, 1, 2].map(iteration =>
+            <EndSlide index={0}/>
+            {[0, 1, 2, 3].map(iteration =>
               ProgramsData.content.map((item, index) => (
-                <Slide index={index + iteration * totalCards}>
+                <Slide index={index + iteration * totalCards + 1}>
                   <ProgramBlock title={item.title} desc={item.desc}>
                     <Img
                       fixed={props.data[item.imgName].childImageSharp.fixed}
@@ -151,22 +171,7 @@ const ProgramsPage = props => {
                 </Slide>
               ))
             )}
-            <Slide index={totalCards * 3}>
-              <ProgramBlock
-                title={"(ㆆ_ㆆ)"}
-                desc={"You reached the end..."}
-                style={{ position: "relative" }}
-              >
-                <Img
-                  fixed={props.data.chickenPeck.childImageSharp.fixed}
-                  style={{
-                    display: "block",
-                    filter: "grayscale(1)",
-                    margin: "147px auto 32px",
-                  }}
-                />
-              </ProgramBlock>
-            </Slide>
+            <EndSlide index={4*totalCards+1}/>
           </Slider>
           <ButtonNext className={classes.button}>
             <FontAwesomeIcon icon={faCaretRight} size="3x" />
