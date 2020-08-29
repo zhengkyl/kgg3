@@ -10,6 +10,10 @@ import {
   useScrollTrigger,
   Typography,
   Hidden,
+  Zoom,
+  Fade,
+  Grow,
+  Collapse,
 } from "@material-ui/core"
 import { Link } from "gatsby"
 import React, { useState } from "react"
@@ -24,23 +28,14 @@ const useStyles = makeStyles(theme => ({
   },
   list: {
     padding: 0,
-    width: 200,
+    // width: 200,
     [theme.breakpoints.up("sm")]: {
       display: "flex",
       width: "initial",
     },
   },
 
-  listItem: {
-    padding: 0,
-    [theme.breakpoints.up("sm")]: {
-      alignItems: "stretch",
-      cursor: "pointer",
-      width: "initial",
-      marginRight: theme.spacing(2),
-      marginLeft: theme.spacing(2),
-    },
-  },
+  
   logo: {
     height: 24,
   },
@@ -48,6 +43,16 @@ const useStyles = makeStyles(theme => ({
     cursor: "pointer",
     margin: "auto 0",
     display: "flex",
+  },
+  listItem: {
+    padding: 0,
+    [theme.breakpoints.up("sm")]: {
+      alignItems: "stretch",
+      // cursor: "pointer",
+      width: "initial",
+      marginRight: theme.spacing(2),
+      marginLeft: theme.spacing(2),
+    },
   },
   link: {
     padding: `${theme.spacing(3)}px ${theme.spacing(2)}px`,
@@ -65,8 +70,17 @@ const useStyles = makeStyles(theme => ({
     },
   },
   activeLink: {
-    paddingTop: `3px`,
-    borderBottom: `3px solid ${theme.palette.primary.main}`,
+    color:theme.palette.primary.main,
+    backgroundColor:theme.palette.background.default,
+    [theme.breakpoints.up("sm")]:{
+      borderBottom: `3px solid ${theme.palette.primary.main}`,
+      paddingTop: `3px`,
+      // color:"unset",
+      backgroundColor:"unset"
+    },
+    "&:hover":{
+      color:'#b2a159'
+    }
   },
   toolbar: {
     alignItems: "stretch",
@@ -82,6 +96,7 @@ const useStyles = makeStyles(theme => ({
   },
   displayText: {
     fontFamily: `"Heebo", "Helvetica", "Arial", sans-serif`,
+    // fontWeight:500
   },
 }))
 
@@ -91,50 +106,37 @@ const pages = [
   { title: "Members", path: "/members" },
   { title: "Contact", path: "/contact" },
 ]
-
 function HideOnScroll({ children }) {
-  // const { children, window } = props
-  const trigger = useScrollTrigger()
-
+  const scrollUp = useScrollTrigger({
+    threshold: 0,
+  })
+  const pageNotAtTop = useScrollTrigger({
+    threshold: 48,
+    disableHysteresis: true,
+  })
   return (
-    <Slide appear={false} direction="down" in={!trigger}>
-      {children}
+    <Slide appear={false} direction="top" in={!scrollUp}>
+      {React.cloneElement(children, {
+        elevation: pageNotAtTop ? 1 : 0,
+        style: { backgroundColor: pageNotAtTop ? "#262626" : "transparent" },
+      })}
     </Slide>
   )
 }
-
 export default function Navbar() {
   const classes = useStyles()
   const [open, setOpen] = useState(false)
-  // const router=useRouter();
 
   const toggleDrawer = open => event => {
     setOpen(open)
   }
 
-  const MobileList = () => (
-    <List className={classes.list}>
-      {pages.map(page => (
-        <Typography variant="h5" component="li" key={page.title}>
-          <ListItem
-            button
-            className={classes.listItem}
-            onClick={toggleDrawer(false)}
-          >
-            <Link to={page.path} className={classes.link}>
-              {page.title}
-            </Link>
-          </ListItem>
-        </Typography>
-      ))}
-      <Divider className={classes.divider} />
-    </List>
-  )
-  const DesktopList = () => (
+  const NavList = ({ isMobile }) => (
     <List className={classes.list}>
       {pages.map(page => (
         <ListItem
           key={page.title}
+          button={isMobile}
           className={classes.listItem}
           onClick={toggleDrawer(false)}
         >
@@ -142,7 +144,7 @@ export default function Navbar() {
             to={page.path}
             className={classes.link}
             activeClassName={classes.activeLink}
-            partiallyActive={page.path!=="/"}
+            partiallyActive={page.path !== "/"}
           >
             <Typography variant="subtitle2" className={classes.displayText}>
               {page.title}
@@ -150,6 +152,7 @@ export default function Navbar() {
           </Link>
         </ListItem>
       ))}
+      <Divider className={classes.divider} />
     </List>
   )
 
@@ -178,19 +181,20 @@ export default function Navbar() {
               </IconButton>
             </Hidden>
             <Hidden xsDown>
-              <DesktopList />
+              {/* <DesktopList /> */}
+              <NavList isMobile={false} />
             </Hidden>
           </Toolbar>
+          <Hidden smUp>
+            <Drawer anchor="top" open={open} onClose={toggleDrawer(false)}>
+              {/* Spacing element to pad top of drawer with height of appbar */}
+              <Toolbar />
+              {/* <MobileList /> */}
+              <NavList isMobile />
+            </Drawer>
+          </Hidden>
         </AppBar>
       </HideOnScroll>
-
-      <Hidden smUp>
-        <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
-          {/* Spacing element to pad top of drawer with height of appbar */}
-          <Toolbar />
-          <MobileList />
-        </Drawer>
-      </Hidden>
 
       {/* Spacing element to pad top of page with height of appbar */}
       <Toolbar />
