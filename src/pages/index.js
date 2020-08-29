@@ -31,7 +31,12 @@ import { makeStyles } from "@material-ui/core/styles"
 const useStyles = makeStyles(theme => ({
   main: {
     display: "flex",
-    flexWrap: "wrap",
+    flexDirection:"column",
+    // flexWrap: "wrap",
+    [theme.breakpoints.up("md")]: {
+      flexDirection: "row",
+    },
+    alignItems:"center",
   },
   sloganContainer: {
     "& b": {
@@ -39,6 +44,14 @@ const useStyles = makeStyles(theme => ({
     },
     minWidth: 320,
     flex: 1,
+  },
+  blockyText: {
+    marginTop: `0.8em`,
+    [theme.breakpoints.up("md")]: {
+      marginTop: '-0.8em',
+    },
+    marginBottom: `0.4em`,
+    textShadow: `-0.05em 0.04em ${theme.palette.primary.dark}`,
   },
   mascot: {
     maxWidth: 600,
@@ -94,11 +107,7 @@ const useStyles = makeStyles(theme => ({
       flex: 1.5,
     },
   },
-  blockyText: {
-    marginTop: `0.8em`,
-    marginBottom: `0.4em`,
-    textShadow: `-0.05em 0.04em ${theme.palette.primary.dark}`,
-  },
+  
   // You may be wondering why. This saves times and noone will know.
   // This cursed workaround is why you should use display:grid.
   spacing: {

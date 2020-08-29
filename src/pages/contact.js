@@ -1,6 +1,5 @@
 import React from "react"
 
-
 import ContactSVG from "../assets/svgs/min/contact.min.svg"
 import SEO from "../components/seo"
 
@@ -15,9 +14,13 @@ const useStyles = makeStyles(theme => ({
     // marginBottom: theme.spacing(1),
     textShadow: `-0.05em 0.04em ${theme.palette.primary.dark}`,
   },
-  email: {
+  contactInfo:{
     color: theme.palette.primary.main,
     textAlign: "center",
+    "& a":{
+      textDecoration: "none",
+      color: theme.palette.primary.main,
+    }
   },
   question: {
     color: theme.palette.primary.main,
@@ -30,15 +33,15 @@ const useStyles = makeStyles(theme => ({
     },
     // textAlign:"center",
   },
-  faqGraphic:{
-    maxWidth:600,
-    display:"block",
-    margin:"auto",
-    flex:1,
+  faqGraphic: {
+    maxWidth: 600,
+    display: "block",
+    margin: "auto",
+    flex: 1,
   },
-  faqText:{
-    flex:1,
-  }
+  faqText: {
+    flex: 1,
+  },
 }))
 
 const ContactPage = props => {
@@ -49,7 +52,9 @@ const ContactPage = props => {
       <Typography variant="h3" component="h2" className={classes.question}>
         {question}
       </Typography>
-      <Typography variant="h6" component="p">{answer}</Typography>
+      <Typography variant="h6" component="p">
+        {answer}
+      </Typography>
     </>
   )
   return (
@@ -59,19 +64,24 @@ const ContactPage = props => {
         <Typography variant="h1" className={classes.blockyText}>
           Contact
         </Typography>
-        <Typography variant="h4" component="p">Email us at </Typography>
-        <Typography variant="h2" className={classes.email}>
-          contact@kgg.gg
+        <Typography variant="h4" component="h2">
+          Email us at{" "}
         </Typography>
-        <Typography variant="h4" component="p">Visit in person at </Typography>
-        <Typography variant="h2" className={classes.email}>
+        <Typography variant="h3" className={classes.contactInfo}>
+          <a href="mailto: contact@kgg.gg">contact@kgg.gg</a>
+        </Typography>
+
+        <Typography variant="h4" component="h2">
+          Visit in person at{" "}
+        </Typography>
+        <Typography variant="h3" className={classes.contactInfo}>
           HCRN 3F Middle Lounge
         </Typography>
         <Typography variant="h1" className={classes.blockyText}>
           FAQ
         </Typography>
         <div className={classes.faqSection}>
-          <ContactSVG className={classes.faqGraphic}/>
+          <ContactSVG className={classes.faqGraphic} />
           <div className={classes.faqText}>
             {FAQData.content.map((item, index) => (
               <FaqBlock question={item.question} answer={item.answer} />
