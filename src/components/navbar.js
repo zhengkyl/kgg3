@@ -10,10 +10,6 @@ import {
   useScrollTrigger,
   Typography,
   Hidden,
-  Zoom,
-  Fade,
-  Grow,
-  Collapse,
 } from "@material-ui/core"
 import { Link } from "gatsby"
 import React, { useState } from "react"
@@ -96,7 +92,7 @@ const useStyles = makeStyles(theme => ({
   },
   displayText: {
     fontFamily: `"Heebo", "Helvetica", "Arial", sans-serif`,
-    // fontWeight:500
+    fontWeight:500
   },
 }))
 
@@ -146,7 +142,7 @@ export default function Navbar() {
             activeClassName={classes.activeLink}
             partiallyActive={page.path !== "/"}
           >
-            <Typography variant="subtitle2" className={classes.displayText}>
+            <Typography variant="subtitle1" className={classes.displayText}>
               {page.title}
             </Typography>
           </Link>

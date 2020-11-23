@@ -1,14 +1,12 @@
-import React from "react"
+import React, { useCallback } from "react"
 import { graphql} from "gatsby"
 import Img from "gatsby-image"
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons"
-import { faWindowMaximize } from "@fortawesome/free-solid-svg-icons"
 
 import SEO from "../components/seo"
 import clsx from "clsx"
 import { Container, Typography } from "@material-ui/core"
+
+import memberData from "../../content/members.yml"
 
 import { makeStyles } from "@material-ui/core/styles"
 const useStyles = makeStyles(theme => ({
@@ -18,11 +16,12 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "space-evenly",
   },
   gridItem: {
-    maxWidth: 420,
-    minWidth: 360,
+    minWidth:300,
     padding: theme.spacing(4),
     textAlign: "center",
-    flex: "1 0 0",
+    flex:1,
+    flexGrow:0,
+    // flex: "0 0 0",
   },
   image: {
     borderRadius: theme.spacing(1),
@@ -68,16 +67,16 @@ const useStyles = makeStyles(theme => ({
 const MembersPage = props => {
   const classes = useStyles()
 
-  const ProfileContainer = ({ fluidImage, name, desc, children }) => (
-    <span className={classes.gridItem}>
-      <Img fluid={fluidImage} className={classes.image} />
+  const ProfileContainer = useCallback(({ fluidImage, name, desc, children }) => (
+    <div className={classes.gridItem}>
+      {fluidImage && <Img fluid={fluidImage} className={classes.image} />}
       <Typography variant="h5" component="h3">{name}</Typography>
       <Typography variant="h6" component="span" className={classes.memberDesc}>
         {desc}
       </Typography>
       <div>{children}</div>
-    </span>
-  )
+    </div>
+  ),[classes])
   return (
     <>
       <SEO title="Members" />
@@ -91,46 +90,41 @@ const MembersPage = props => {
           component="h2"
           className={clsx(classes.sectionTitle, classes.centerText)}
         >
-          Ranked by Epicness
+          Executive Board
         </Typography>
 
         <div className={classes.gridContainer}>
-          <ProfileContainer
-            fluidImage={props.data.kyleZheng.childImageSharp.fluid}
-            name="Kyle Zheng"
-            desc="made this website"
-          >
-            <a
-              href="https://kylezheng.dev"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={classes.socialIcon}
-            >
-              <FontAwesomeIcon icon={faWindowMaximize} size="lg" />
-            </a>
-            <a
-              href="https://github.com/zhengkyl"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={classes.socialIcon}
-            >
-              <FontAwesomeIcon icon={faGithub} size="lg" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/kyle-zheng-9b2546145/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={classes.socialIcon}
-            >
-              <FontAwesomeIcon icon={faLinkedin} size="lg" />
-            </a>
-          </ProfileContainer>
-
-          <ProfileContainer
-            fluidImage={props.data.kggGroup.childImageSharp.fluid}
-            name="Others"
-            desc="did not make this website"
-          />
+          {
+            memberData.upper.map((member)=>{
+              const names=member.name.toLowerCase().split(' ')
+              console.log(`${names[0]}_${names[1]}`)
+              return <ProfileContainer
+              fluidImage={props.data[`${names[0]}_${names[1]}`].childImageSharp.fluid}
+              name={member.name}
+              desc={member.subtitle}
+            />
+            })
+          }
+        </div>
+        <Typography
+          variant="h3"
+          component="h2"
+          className={clsx(classes.sectionTitle, classes.centerText)}
+        >
+          Team Leaders
+        </Typography>
+        <div className={classes.gridContainer}>
+          {
+            memberData.lower.map((member)=>{
+              const names=member.name.toLowerCase().split(' ')
+              console.log(`${names[0]}_${names[1]}`)
+              return <ProfileContainer
+              fluidImage={props.data[`${names[0]}_${names[1]}`].childImageSharp.fluid}
+              name={member.name}
+              desc={member.subtitle}
+            />
+            })
+          }
         </div>
         <Typography variant="h3" component="h2" className={classes.sectionTitle}>
           Looking to join?
@@ -150,6 +144,111 @@ const MembersPage = props => {
 export const pageQuery = graphql`
   query {
     kyleZheng: file(relativePath: { eq: "kyle_zheng.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 300) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    josh_mcatee: file(relativePath: { eq: "people/josh_mcatee.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 300) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    james_yin: file(relativePath: { eq: "people/james_yin.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 300) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    rachel_zhang: file(relativePath: { eq: "people/rachel_zhang.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 300) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    sylvia_liu: file(relativePath: { eq: "people/sylvia_liu.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 300) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    richard_li: file(relativePath: { eq: "people/richard_li.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 300) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    pranav_anandarao: file(relativePath: { eq: "people/pranav_anandarao.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 300) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    sai_pothireddy: file(relativePath: { eq: "people/sai_pothireddy.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 300) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    peter_jiang: file(relativePath: { eq: "people/peter_jiang.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 300) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    chris_yu: file(relativePath: { eq: "people/chris_yu.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 300) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    nandini_krishna: file(relativePath: { eq: "people/nandini_krishna.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 300) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    ben_zhu: file(relativePath: { eq: "people/ben_zhu.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 300) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    joseph_hsu: file(relativePath: { eq: "people/joseph_hsu.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 300) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    kevin_zhang: file(relativePath: { eq: "people/kevin_zhang.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 300) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    suruchi_sen: file(relativePath: { eq: "people/suruchi_sen.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 300) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    jaineel_patel: file(relativePath: { eq: "people/jaineel_patel.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 300) {
           ...GatsbyImageSharpFluid

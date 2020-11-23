@@ -1,0 +1,35 @@
+upper:
+  - name: Josh McAtee
+    subtitle: Midwest President
+  - name: James Yin
+    subtitle: East Coast President
+
+  - name: Rachel Zhang
+    subtitle: Events Director
+  - name: Sylvia Liu
+    subtitle: Recruitment Director
+  - name: Richard Li
+    subtitle: Technology Director
+  - name: Pranav Anandarao
+    subtitle: Public Relations Director
+
+  - name: Sai Pothireddy
+    subtitle: Secretary
+  - name: Peter Jiang
+    subtitle: Treasurer
+  - name: Chris Yu
+    subtitle: Head of Diversity Outreach
+  - name: Nandini Krishna
+    subtitle: Head of International Outreach
+lower:  
+  - name: Ben Zhu
+    subtitle: Game Lead
+  - name: Joseph Hsu
+    subtitle: Game Lead
+  - name: Kevin Zhang
+    subtitle: Game Lead
+
+  - name: Suruchi Sen
+    subtitle: Twitch Representative
+  - name: Jaineel Patel
+    subtitle: Twitch Representative
